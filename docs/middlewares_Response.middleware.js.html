@@ -1,0 +1,244 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  tracking-code-which-will-go-to-the-HEAD
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TRANSOL SERVER API middlewares/Response.middleware.js</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="style.css">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+             
+                <a class="image" href="index.html">
+                    <img src="./public/logo.png" alt="logo">
+                </a>
+            
+             
+                <a href="index.html">
+                    <h1 class="navbar-item">TRANSOL DOCS</h1>
+                </a>
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                 
+                    
+                        <a
+                            class="link user-link "
+                            href="https://github.com/SoftwareBrothers/admin-bro"
+                        >
+                            Github
+                        </a>
+                    
+                        <a
+                            class="link user-link "
+                            href="https://admin-bro-example-app-staging.herokuapp.com/admin"
+                        >
+                            Example Application
+                        </a>
+                    
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+                <div class="search-wrapper">
+                    <input id="search" type="text" placeholder="Search docs..." class="input">
+                </div>
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="CustomError.html">CustomError</a></li><li><a href="CustomLogger.html">CustomLogger</a></li><li><a href="CustomResponse.html">CustomResponse</a></li></ul><h3>Global</h3><ul><li><a href="global.html#asyncHandler">asyncHandler</a></li></ul></div><div class="category"><h2>Controllers</h2><h3>Classes</h3><ul><li><a href="mechanic_ctrl.html">mechanic_ctrl</a></li><li><a href="user_ctrl.html">user_ctrl</a></li></ul></div><div class="category"><h2>Middlewares</h2><h3>Classes</h3><ul><li><a href="Response.html">Response</a></li></ul></div><div class="category"><h2>Schemas</h2><h3>Classes</h3><ul><li><a href="MechanicSchema.html">MechanicSchema</a></li><li><a href="UserSchema.html">UserSchema</a></li></ul></div><div class="category"><h2>Services</h2><h3>Classes</h3><ul><li><a href="mechanic_service.html">mechanic_service</a></li><li><a href="user_service.html">user_service</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>middlewares/Response.middleware.js</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const CustomResponse = require('../utils/CustomResponse.utils');
+const { log } = require('../utils/customLogger.utils');
+
+/**
+ *
+ * Wrapper function for routes to set Pre-defined response methods
+ * @param {Express.Router()} Route - Root route to use the Response middleware
+ * @returns List of pre-defined response methods to be used in query response. theses are passed on to the next middleware/controller by calling next()
+ *
+ * @category Middlewares
+ *
+ * @property {Method} success - Method for undefined queries
+ * @property {Method} created - Response for create queries
+ * @property {Method} found - Method for find/get queries
+ * @property {Method} updated - Method for update queries
+ * @property {Method} deleted - Method for delete queries
+ *
+ * @example &lt;caption>Using the middleware on a route&lt;/caption>
+ * // Import middleware into route or root route
+ * const Response = require('path/to/middleware')
+ * const {Router} = require('express')
+ *
+ * // set route
+ * const AppRoute = Router()
+ * // wrap route at top level with Response middleware
+ * Response(AppRoute)
+ * // Apply other routes or middlewares below
+ *
+ * @example &lt;caption>Using the methods to return response data inside a middleware or controller&lt;/caption>
+ * // there is no need for imports as the methods are added to the res object
+ * async GET_USER(req, res) {
+ * const queryData = await user_service.GET_USER()
+ * res.found(queryData, 'ALl Users')
+ * }
+ *
+ * @class
+ */
+const Response = (Route) => {
+  if (!Route)
+    return log.warn(
+      'Response Middleware requires 1 parameter(Route) but got nothing'
+    );
+
+  Route.use((req, res, next) => {
+    // ======= success response -->
+    res.success = (data, target) => {
+      // prettier-ignore
+      return res
+              .status(200)
+              .json(new CustomResponse(target ? `${target} [successful]`:'Success' , data, true));
+    };
+    // ======= created response -->
+    res.created = (data, target) => {
+      //   prettier-ignore
+      return res
+            .status(201)
+            .json(new CustomResponse(target? `${target} [created]`:'Created', data, true))
+    };
+
+    // ======= found response -->
+    res.found = (data, target) => {
+      //   prettier-ignore
+      return res
+          .status(200)
+          .json(new CustomResponse(target? `${target} [found]`:'Found', data, true))
+    };
+
+    // ======= Update response -->
+    res.updated = (data, target) => {
+      return res
+        .status(202)
+        .json(
+          new CustomResponse(
+            target ? `${target} [updated]` : 'updated',
+            data,
+            true
+          )
+        );
+    };
+
+    // ======= Delete response -->
+    res.deleted = (data, target) => {
+      return res
+        .status(200)
+        .json(
+          new CustomResponse(
+            target ? `${target} [deleted]` : 'deleted',
+            data,
+            null
+          )
+        );
+    };
+    next();
+  });
+};
+
+module.exports = Response;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.10</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+<script src="scripts/search.js"> </script>
+
+
+</body>
+</html>
