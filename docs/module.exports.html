@@ -5,7 +5,7 @@
   tracking-code-which-will-go-to-the-HEAD
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TRANSOL SERVER API Response</title>
+  <title>TRANSOL SERVER API exports</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -94,7 +94,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="CustomError.html">CustomError</a></li><li><a href="CustomLogger.html">CustomLogger</a></li><li><a href="CustomResponse.html">CustomResponse</a></li></ul><h3>Global</h3><ul><li><a href="global.html#asyncHandler">asyncHandler</a></li></ul></div><div class="category"><h2>Controllers</h2><h3>Classes</h3><ul><li><a href="mechanic_ctrl.html">mechanic_ctrl</a></li><li><a href="user_ctrl.html">user_ctrl</a></li></ul></div><div class="category"><h2>Middlewares</h2><h3>Classes</h3><ul><li><a href="pre_route.html">pre_route</a></li><li><a href="Response.html">Response</a></li></ul></div><div class="category"><h2>Schemas</h2><h3>Classes</h3><ul><li><a href="AdminSchema.html">AdminSchema</a></li><li><a href="MechanicSchema.html">MechanicSchema</a></li><li><a href="RoleSchema.html">RoleSchema</a></li><li><a href="UserSchema.html">UserSchema</a></li></ul></div><div class="category"><h2>Services</h2><h3>Classes</h3><ul><li><a href="mechanic_service.html">mechanic_service</a></li><li><a href="user_service.html">user_service</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="CustomError.html">CustomError</a></li><li><a href="CustomLogger.html">CustomLogger</a></li><li><a href="CustomResponse.html">CustomResponse</a></li></ul><h3>Global</h3><ul><li><a href="global.html#asyncHandler">asyncHandler</a></li></ul></div><div class="category"><h2>Controllers</h2><h3>Classes</h3><ul><li><a href="mechanic_ctrl.html">mechanic_ctrl</a></li><li><a href="user_ctrl.html">user_ctrl</a></li></ul></div><div class="category"><h2>Middlewares</h2><h3>Classes</h3><ul><li><a href="module.exports.html">exports</a></li><li><a href="Response.html">Response</a></li></ul></div><div class="category"><h2>Schemas</h2><h3>Classes</h3><ul><li><a href="MechanicSchema.html">MechanicSchema</a></li><li><a href="UserSchema.html">UserSchema</a></li></ul></div><div class="category"><h2>Services</h2><h3>Classes</h3><ul><li><a href="mechanic_service.html">mechanic_service</a></li><li><a href="user_service.html">user_service</a></li></ul></div>
                 
             </nav>
         </div>
@@ -102,7 +102,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Class</p>
-                    <h1>Response</h1>
+                    <h1>exports</h1>
                 </header>
                 
 
@@ -113,7 +113,7 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>Response<span class="signature">(Route)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>exports<span class="signature">(app)</span><span class="type-signature"> &rarr; {void}</span></h2>
         
     
 </header>
@@ -132,12 +132,12 @@
 
 
     
-    <h4 class="name" id="Response">
-        <a class="href-link" href="#Response">#</a>
+    <h4 class="name" id="exports">
+        <a class="href-link" href="#exports">#</a>
         
         <span class="code-name">
             
-                new Response<span class="signature">(Route)</span><span class="type-signature"></span>
+                new exports<span class="signature">(app)</span><span class="type-signature"> &rarr; {void}</span>
             
         </span>
     </h4>
@@ -146,7 +146,7 @@
     
     
     <div class="description">
-        <script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script><p>Wrapper function for routes to set Pre-defined response methods</p>
+        <script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script><p>Used to apply all pre-route middlewares</p>
     </div>
     
 
@@ -184,13 +184,13 @@
             
 <tr class="deep-level-0">
   
-      <td class="name"><code>Route</code></td>
+      <td class="name"><code>app</code></td>
   
 
   <td class="type">
   
       
-<code class="param-type">Express.Router()</code>
+<code class="param-type">*</code>
 
 
   
@@ -200,7 +200,7 @@
 
   
 
-  <td class="description last"><p>Root route to use the Response middleware</p></td>
+  <td class="description last"><p>Instance of express app</p></td>
 </tr>
 
 
@@ -239,13 +239,13 @@
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>success</code></td>
+        <td class="name"><code>cors</code></td>
     
 
     <td class="type">
     
         
-<code class="param-type">Method</code>
+<code class="param-type">middleware</code>
 
 
     
@@ -255,20 +255,20 @@
 
     
 
-    <td class="description last"><p>Method for undefined queries</p></td>
+    <td class="description last"><p>For Cross origin resource sharing</p></td>
 </tr>
 
         
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>created</code></td>
+        <td class="name"><code>helmet</code></td>
     
 
     <td class="type">
     
         
-<code class="param-type">Method</code>
+<code class="param-type">Middleware</code>
 
 
     
@@ -278,20 +278,20 @@
 
     
 
-    <td class="description last"><p>Response for create queries</p></td>
+    <td class="description last"><p>For Basic http method security</p></td>
 </tr>
 
         
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>found</code></td>
+        <td class="name"><code>morgan</code></td>
     
 
     <td class="type">
     
         
-<code class="param-type">Method</code>
+<code class="param-type">Middleware</code>
 
 
     
@@ -301,20 +301,20 @@
 
     
 
-    <td class="description last"><p>Method for find/get queries</p></td>
+    <td class="description last"><p>For logging API call info</p></td>
 </tr>
 
         
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>updated</code></td>
+        <td class="name"><code>express.json</code></td>
     
 
     <td class="type">
     
         
-<code class="param-type">Method</code>
+<code class="param-type">Middleware</code>
 
 
     
@@ -324,30 +324,7 @@
 
     
 
-    <td class="description last"><p>Method for update queries</p></td>
-</tr>
-
-        
-            
-<tr class="deep-level-0">
-    
-        <td class="name"><code>deleted</code></td>
-    
-
-    <td class="type">
-    
-        
-<code class="param-type">Method</code>
-
-
-    
-    </td>
-
-    
-
-    
-
-    <td class="description last"><p>Method for delete queries</p></td>
+    <td class="description last"><p>For parsing JSON objects in request body</p></td>
 </tr>
 
         
@@ -390,9 +367,9 @@
 
     
         <p class="tag-source">
-            <a href="middlewares_Response.middleware.js.html" class="button">View Source</a>
+            <a href="middlewares_pre_route.middleware.js.html" class="button">View Source</a>
             <span>
-                <a href="middlewares_Response.middleware.js.html">middlewares/Response.middleware.js</a>, <a href="middlewares_Response.middleware.js.html#line38">line 38</a>
+                <a href="middlewares_pre_route.middleware.js.html">middlewares/pre_route.middleware.js</a>, <a href="middlewares_pre_route.middleware.js.html#line21">line 21</a>
             </span>
         </p>
     
@@ -423,8 +400,14 @@
 
 <div class="columns">
     
-    <div class='param-desc column is-7'><p>List of pre-defined response methods to be used in query response. theses are passed on to the next middleware/controller by calling next()</p></div>
     
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">void</code>
+
+
+    </div>
     
 </div>
 
@@ -433,21 +416,6 @@
     </div>
 
 
-
-
-    <h5>Examples</h5>
-    
-        <p class="code-caption">Using the middleware on a route</p>
-    
-    
-        <pre class="prettyprint"><code>// Import middleware into route or root routeconst Response = require('path/to/middleware')const {Router} = require('express')// set routeconst AppRoute = Router()// wrap route at top level with Response middlewareResponse(AppRoute)// Apply other routes or middlewares below</code></pre>
-    
-
-        <p class="code-caption">Using the methods to return response data inside a middleware or controller</p>
-    
-    
-        <pre class="prettyprint"><code>// there is no need for imports as the methods are added to the res objectasync GET_USER(req, res) {const queryData = await user_service.GET_USER()res.found(queryData, 'ALl Users')}</code></pre>
-    
 
 
 

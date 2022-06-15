@@ -7,7 +7,7 @@
   tracking-code-which-will-go-to-the-HEAD
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TRANSOL SERVER API utils/customLogger.utils.js</title>
+  <title>TRANSOL SERVER API database/models/admin/admin.model.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -104,7 +104,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>utils/customLogger.utils.js</h1>
+                    <h1>database/models/admin/admin.model.js</h1>
                 </header>
                 
 
@@ -113,94 +113,63 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const logger = require('node-color-log');
+            <pre class="prettyprint source linenums"><code>const mongoose = require('mongoose');
 
 /**
- * Logger class for custom logger
- * @example &lt;caption>Importing custom logger&lt;/caption>
- * const {log} = require('path/to/CustomLogger.js') // named import
+ * @constructor
+ * @category Schemas
  *
- * @example &lt;caption>Using the log object&lt;/caption>
- * // Logging success
- * log.success('The task was successful')
- * // logging errors
- * log.error('The task failed')
- *
+ * @property {String} firstname - Admin first name
+ * @property {String} lastname - Admin last name
+ * @property {String} username - Admin username
+ * @property {String} email - Admin email
+ * @property {String} password - Admin password
+ * @property {ObjectId} roles - Roles of Admin
+ * @property {String} admin_key - Unique key ID assigned to admin
  */
-class CustomLogger {
-  /**
-   * Success Log method
-   * @param {String} [msg = ''] - Success message to be logged
-   */
-  success(msg) {
-    return logger
-      .color('black')
-      .bgColor('green')
-      .log('SUCCESS ')
-      .joint()
-      .color('green')
-      .log(` >  ${msg || ''}`);
-  }
+const AdminSchema = new mongoose.Schema(
+  {
+    firstname: {
+      type: String,
+      required: [true, 'Fist name is required'],
+    },
+    lastname: {
+      type: String,
+      required: [true, 'Last name is required'],
+    },
+    username: {
+      type: String,
+      unique: [true, 'Username must be unique'],
+      required: [true, 'Username is required'],
+    },
 
-  /**
-   * Error Log method
-   * @param {String} [msg = ''] - Error message to be logged
-   */
-  error(msg) {
-    return logger
-      .color('black')
-      .bgColor('red')
-      .log('ERROR ')
-      .joint()
-      .color('red')
-      .log(` > ${msg || ''}`);
-  }
+    email: {
+      type: String,
+      required: [true, 'EMail must be provided '],
+      unique: [true, 'Email already exists'],
+      match:
+        /^[a-zA-Z0-9.!#$%&amp;'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+    },
 
-  /**
-   * Info Log method
-   * @param {String} [msg = ''] - Info message to be logged
-   */
-  info(msg) {
-    return logger
-      .color('black')
-      .bgColor('cyan')
-      .log('INFO ')
-      .joint()
-      .color('cyan')
-      .log(` > ${msg || ''}`);
-  }
+    password: {
+      type: String,
+      required: [true, 'Password is required'],
+      unique: [true, 'Password already exits'],
+      minlength: [6, 'Password cannot be less than 6 characters'],
+    },
 
-  /**
-   * Warn Log method
-   * @param {String} [msg = ''] - Warn message to be logged
-   */
-  warn(msg) {
-    return logger
-      .color('black')
-      .bgColor('yellow')
-      .log('WARN ')
-      .joint()
-      .color('yellow')
-      .log(` > ${msg || ''}`);
+    roles: [{ type: mongoose.Schema.Types.ObjectId, ref: 'roles' }],
+    admin_key: { type: String, required: true, unique: true },
+  },
+  {
+    timestamps: true,
+    collection: 'admins',
   }
+);
 
-  /**
-   * Data Log method
-   * @param {String} [msg = ''] - Data message to be logged
-   */
-  data(msg) {
-    return logger
-      .color('black')
-      .bgColor('magenta')
-      .log('DATA ')
-      .joint()
-      .color('magenta')
-      .log(` > ${msg || ''}`);
-  }
-}
+const AdminModel = mongoose.model('admins', AdminSchema);
 
-const log = new CustomLogger();
-module.exports = { log };
+module.exports = AdminModel;
 </code></pre>
         </article>
     </section>

@@ -96,7 +96,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="CustomError.html">CustomError</a></li><li><a href="CustomLogger.html">CustomLogger</a></li><li><a href="CustomResponse.html">CustomResponse</a></li></ul><h3>Global</h3><ul><li><a href="global.html#asyncHandler">asyncHandler</a></li></ul></div><div class="category"><h2>Controllers</h2><h3>Classes</h3><ul><li><a href="mechanic_ctrl.html">mechanic_ctrl</a></li><li><a href="user_ctrl.html">user_ctrl</a></li></ul></div><div class="category"><h2>Middlewares</h2><h3>Classes</h3><ul><li><a href="Response.html">Response</a></li></ul></div><div class="category"><h2>Schemas</h2><h3>Classes</h3><ul><li><a href="MechanicSchema.html">MechanicSchema</a></li><li><a href="UserSchema.html">UserSchema</a></li></ul></div><div class="category"><h2>Services</h2><h3>Classes</h3><ul><li><a href="mechanic_service.html">mechanic_service</a></li><li><a href="user_service.html">user_service</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="CustomError.html">CustomError</a></li><li><a href="CustomLogger.html">CustomLogger</a></li><li><a href="CustomResponse.html">CustomResponse</a></li></ul><h3>Global</h3><ul><li><a href="global.html#asyncHandler">asyncHandler</a></li></ul></div><div class="category"><h2>Controllers</h2><h3>Classes</h3><ul><li><a href="mechanic_ctrl.html">mechanic_ctrl</a></li><li><a href="user_ctrl.html">user_ctrl</a></li></ul></div><div class="category"><h2>Middlewares</h2><h3>Classes</h3><ul><li><a href="pre_route.html">pre_route</a></li><li><a href="Response.html">Response</a></li></ul></div><div class="category"><h2>Schemas</h2><h3>Classes</h3><ul><li><a href="AdminSchema.html">AdminSchema</a></li><li><a href="MechanicSchema.html">MechanicSchema</a></li><li><a href="RoleSchema.html">RoleSchema</a></li><li><a href="UserSchema.html">UserSchema</a></li></ul></div><div class="category"><h2>Services</h2><h3>Classes</h3><ul><li><a href="mechanic_service.html">mechanic_service</a></li><li><a href="user_service.html">user_service</a></li></ul></div>
                 
             </nav>
         </div>
@@ -114,6 +114,7 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>const mechanicService = require('../services/mechanic.service');
+const CustomError = require('../utils/customError.utils');
 const { log } = require('../utils/customLogger.utils');
 
 /**
@@ -135,10 +136,10 @@ class mechanic_ctrl {
    * @returns Newly created Mechanic
    */
   async CREATE(req, res) {
-    const mechData = req.data;
+    const mechData = req.body;
     const queryData = await mechanicService.CREATE(mechData);
     log.data(queryData);
-    res.created(queryData);
+    res.created(queryData, 'New mechanic');
   }
 
   /**
@@ -149,7 +150,7 @@ class mechanic_ctrl {
    */
   async GET(req, res) {
     const queryData = await mechanicService.GET();
-    res.found(queryData);
+    res.found(queryData, 'All mechanics');
   }
 
   /**
@@ -158,10 +159,14 @@ class mechanic_ctrl {
    * @param {*} res - response Object
    * @returns Single Mechanic by ID
    */
-  async GET_BY_ID(req, res) {
+  async GET_BY_ID(req, res, next) {
     const mechId = req.params.id;
     const queryData = await mechanicService.GET_BY_ID(mechId);
-    res.found(queryData);
+
+    // ======= check for null data -->
+    queryData === null
+      ? next(new CustomError(`No Mechanic found with ID ${mechId}`, 404))
+      : res.found(queryData, 'Single mechanic');
   }
 
   /**
@@ -173,7 +178,7 @@ class mechanic_ctrl {
   async UPDATE(req, res) {
     const updateData = req.body;
     const queryData = await mechanicService.UPDATE(updateData);
-    res.success(queryData, 'update all users');
+    res.updated(queryData, 'All mechanic');
   }
 
   /**
@@ -182,11 +187,15 @@ class mechanic_ctrl {
    * @param {*} res - response Object
    * @returns Update detail of single mechanic
    */
-  async UPDATE_BY_ID(req, res) {
+  async UPDATE_BY_ID(req, res, next) {
     const updateData = req.body;
     const mechId = req.params.id;
     const queryData = await mechanicService.UPDATE_BY_ID(updateData, mechId);
-    res.updated(queryData, mechId || 'Single mechanic');
+
+    // ======= check for null data -->
+    queryData === null
+      ? next(new CustomError('No found document to be updated', 404))
+      : res.updated(queryData, mechId || 'Single mechanic');
   }
 
   /**
@@ -195,10 +204,14 @@ class mechanic_ctrl {
    * @param {*} res - response Object
    * @returns Delete details for single mechanic
    */
-  async DELETE(req, res) {
+  async DELETE(req, res, next) {
     const mechId = req.params.id;
     const queryData = await mechanicService.DELETE(mechId);
-    res.deleted(queryData, mechId || 'Single mechanic');
+
+    // ======= check if delete count is more than 0 -->
+    queryData.deletedCount
+      ? res.deleted(queryData, mechId || 'Single mechanic')
+      : next(new CustomError('No found document to be deleted', 404));
   }
 }
 
