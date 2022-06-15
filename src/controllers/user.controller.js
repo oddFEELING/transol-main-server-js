@@ -58,7 +58,7 @@ class user_ctrl {
    *
    * @param {*} req - request Object
    * @param {*} res - Response Object
-   * @returns update stats of alll users
+   * @returns update stats of all users
    */
   async UPDATE(req, res) {
     const updateData = req.body;
@@ -70,7 +70,7 @@ class user_ctrl {
    *
    * @param {*} req - request Object
    * @param {*} res - Response Object
-   * @returns Update stats of single user
+   * @returns Updated user
    */
   async UPDATE_BY_ID(req, res) {
     const userId = req.params.id;
@@ -90,9 +90,9 @@ class user_ctrl {
     const queryData = await userService.DELETE(userId);
 
     // ======= check if delete count is more than 0 -->
-    queryData.deletedCount
-      ? res.success(queryData)
-      : next(new CustomError('No found document to be deleted', 404));
+    queryData === null
+      ? next(new CustomError('No found document to be deleted', 404))
+      : res.deleted(queryData, userId || 'Single user');
   }
 }
 

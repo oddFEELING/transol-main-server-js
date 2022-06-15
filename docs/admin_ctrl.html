@@ -5,7 +5,7 @@
   tracking-code-which-will-go-to-the-HEAD
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TRANSOL SERVER API CustomLogger</title>
+  <title>TRANSOL SERVER API admin_ctrl</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -102,7 +102,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Class</p>
-                    <h1>CustomLogger</h1>
+                    <h1>admin_ctrl</h1>
                 </header>
                 
 
@@ -113,9 +113,9 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>CustomLogger<span class="signature">()</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>admin_ctrl<span class="signature">()</span><span class="type-signature"></span></h2>
         
-            <div class="class-description"><p>Logger class for custom logger</p></div>
+            <div class="class-description"><p>Admin controller for admin routes</p></div>
         
     
 </header>
@@ -134,12 +134,12 @@
 
 
     
-    <h4 class="name" id="CustomLogger">
-        <a class="href-link" href="#CustomLogger">#</a>
+    <h4 class="name" id="admin_ctrl">
+        <a class="href-link" href="#admin_ctrl">#</a>
         
         <span class="code-name">
             
-                new CustomLogger<span class="signature">()</span><span class="type-signature"></span>
+                new admin_ctrl<span class="signature">()</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -197,9 +197,9 @@
 
     
         <p class="tag-source">
-            <a href="utils_customLogger.utils.js.html" class="button">View Source</a>
+            <a href="controllers_admin.controller.js.html" class="button">View Source</a>
             <span>
-                <a href="utils_customLogger.utils.js.html">utils/customLogger.utils.js</a>, <a href="utils_customLogger.utils.js.html#line15">line 15</a>
+                <a href="controllers_admin.controller.js.html">controllers/admin.controller.js</a>, <a href="controllers_admin.controller.js.html#line16">line 16</a>
             </span>
         </p>
     
@@ -225,18 +225,12 @@
 
 
 
-    <h5>Examples</h5>
+    <h5>Example</h5>
     
-        <p class="code-caption">Importing custom logger</p>
-    
-    
-        <pre class="prettyprint"><code>const {log} = require('path/to/CustomLogger.js') // named import</code></pre>
-    
-
-        <p class="code-caption">Using the log object</p>
+        <p class="code-caption">Using the controller for sample route</p>
     
     
-        <pre class="prettyprint"><code>// Logging successlog.success('The task was successful')// logging errorslog.error('The task failed')</code></pre>
+        <pre class="prettyprint"><code>const admin_ctrl = require('path/to/controller')const AdminRoute = express.Router()AdminRoute.route('/api/admins').use(admin_ctrl.CREATE)</code></pre>
     
 
 
@@ -271,12 +265,16 @@
 
 
     
-    <h4 class="name" id="data">
-        <a class="href-link" href="#data">#</a>
+    <h4 class="name" id="CREATE">
+        <a class="href-link" href="#CREATE">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
         
         <span class="code-name">
             
-                data<span class="signature">(msg<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
+                CREATE<span class="signature">(req, res)</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -285,7 +283,7 @@
     
     
     <div class="description">
-        <script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script><p>Data Log method</p>
+        <script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script>
     </div>
     
 
@@ -310,11 +308,7 @@
             <th>Type</th>
 
             
-            <th>Attributes</th>
-            
 
-            
-            <th>Default</th>
             
 
             <th class="last">Description</th>
@@ -327,39 +321,48 @@
             
 <tr class="deep-level-0">
   
-      <td class="name"><code>msg</code></td>
+      <td class="name"><code>req</code></td>
   
 
   <td class="type">
   
       
-<code class="param-type">String</code>
+<code class="param-type">req</code>
 
 
   
   </td>
 
   
-      <td class="attributes">
-      
-          &lt;optional><br>
-      
 
-      
+  
 
+  <td class="description last"><p>request Object</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>res</code></td>
+  
+
+  <td class="type">
+  
       
-      </td>
+<code class="param-type">res</code>
+
+
+  
+  </td>
+
   
 
   
-      <td class="default">
-      
-          ''
-      
-      </td>
-  
 
-  <td class="description last"><p>Data message to be logged</p></td>
+  <td class="description last"><p>response Object</p></td>
 </tr>
 
 
@@ -405,9 +408,9 @@
 
     
         <p class="tag-source">
-            <a href="utils_customLogger.utils.js.html" class="button">View Source</a>
+            <a href="controllers_admin.controller.js.html" class="button">View Source</a>
             <span>
-                <a href="utils_customLogger.utils.js.html">utils/customLogger.utils.js</a>, <a href="utils_customLogger.utils.js.html#line76">line 76</a>
+                <a href="controllers_admin.controller.js.html">controllers/admin.controller.js</a>, <a href="controllers_admin.controller.js.html#line23">line 23</a>
             </span>
         </p>
     
@@ -429,6 +432,23 @@
 
 
 
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>Newly created admin</p></div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
 
 
 
@@ -439,12 +459,16 @@
 
 
     
-    <h4 class="name" id="error">
-        <a class="href-link" href="#error">#</a>
+    <h4 class="name" id="DELETE">
+        <a class="href-link" href="#DELETE">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
         
         <span class="code-name">
             
-                error<span class="signature">(msg<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
+                DELETE<span class="signature">(req, res)</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -453,7 +477,7 @@
     
     
     <div class="description">
-        <script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script><p>Error Log method</p>
+        <script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script>
     </div>
     
 
@@ -478,11 +502,7 @@
             <th>Type</th>
 
             
-            <th>Attributes</th>
-            
 
-            
-            <th>Default</th>
             
 
             <th class="last">Description</th>
@@ -495,39 +515,48 @@
             
 <tr class="deep-level-0">
   
-      <td class="name"><code>msg</code></td>
+      <td class="name"><code>req</code></td>
   
 
   <td class="type">
   
       
-<code class="param-type">String</code>
+<code class="param-type">*</code>
 
 
   
   </td>
 
   
-      <td class="attributes">
-      
-          &lt;optional><br>
-      
 
-      
+  
 
+  <td class="description last"><p>request Object</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>res</code></td>
+  
+
+  <td class="type">
+  
       
-      </td>
+<code class="param-type">*</code>
+
+
+  
+  </td>
+
   
 
   
-      <td class="default">
-      
-          ''
-      
-      </td>
-  
 
-  <td class="description last"><p>Error message to be logged</p></td>
+  <td class="description last"><p>Response Object</p></td>
 </tr>
 
 
@@ -573,9 +602,9 @@
 
     
         <p class="tag-source">
-            <a href="utils_customLogger.utils.js.html" class="button">View Source</a>
+            <a href="controllers_admin.controller.js.html" class="button">View Source</a>
             <span>
-                <a href="utils_customLogger.utils.js.html">utils/customLogger.utils.js</a>, <a href="utils_customLogger.utils.js.html#line34">line 34</a>
+                <a href="controllers_admin.controller.js.html">controllers/admin.controller.js</a>, <a href="controllers_admin.controller.js.html#line87">line 87</a>
             </span>
         </p>
     
@@ -597,6 +626,23 @@
 
 
 
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>Delete details of deleted admin</p></div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
 
 
 
@@ -607,12 +653,16 @@
 
 
     
-    <h4 class="name" id="info">
-        <a class="href-link" href="#info">#</a>
+    <h4 class="name" id="GET">
+        <a class="href-link" href="#GET">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
         
         <span class="code-name">
             
-                info<span class="signature">(msg<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
+                GET<span class="signature">(req, res)</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -621,7 +671,7 @@
     
     
     <div class="description">
-        <script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script><p>Info Log method</p>
+        <script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script>
     </div>
     
 
@@ -646,11 +696,7 @@
             <th>Type</th>
 
             
-            <th>Attributes</th>
-            
 
-            
-            <th>Default</th>
             
 
             <th class="last">Description</th>
@@ -663,39 +709,48 @@
             
 <tr class="deep-level-0">
   
-      <td class="name"><code>msg</code></td>
+      <td class="name"><code>req</code></td>
   
 
   <td class="type">
   
       
-<code class="param-type">String</code>
+<code class="param-type">*</code>
 
 
   
   </td>
 
   
-      <td class="attributes">
-      
-          &lt;optional><br>
-      
 
-      
+  
 
+  <td class="description last"><p>request Object</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>res</code></td>
+  
+
+  <td class="type">
+  
       
-      </td>
+<code class="param-type">*</code>
+
+
+  
+  </td>
+
   
 
   
-      <td class="default">
-      
-          ''
-      
-      </td>
-  
 
-  <td class="description last"><p>Info message to be logged</p></td>
+  <td class="description last"><p>Response Object</p></td>
 </tr>
 
 
@@ -741,9 +796,9 @@
 
     
         <p class="tag-source">
-            <a href="utils_customLogger.utils.js.html" class="button">View Source</a>
+            <a href="controllers_admin.controller.js.html" class="button">View Source</a>
             <span>
-                <a href="utils_customLogger.utils.js.html">utils/customLogger.utils.js</a>, <a href="utils_customLogger.utils.js.html#line48">line 48</a>
+                <a href="controllers_admin.controller.js.html">controllers/admin.controller.js</a>, <a href="controllers_admin.controller.js.html#line35">line 35</a>
             </span>
         </p>
     
@@ -765,6 +820,23 @@
 
 
 
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>List of all admins</p></div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
 
 
 
@@ -775,12 +847,16 @@
 
 
     
-    <h4 class="name" id="success">
-        <a class="href-link" href="#success">#</a>
+    <h4 class="name" id="GET_BY_ID">
+        <a class="href-link" href="#GET_BY_ID">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
         
         <span class="code-name">
             
-                success<span class="signature">(msg<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
+                GET_BY_ID<span class="signature">(req, res)</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -789,7 +865,7 @@
     
     
     <div class="description">
-        <script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script><p>Success Log method</p>
+        <script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script>
     </div>
     
 
@@ -814,11 +890,7 @@
             <th>Type</th>
 
             
-            <th>Attributes</th>
-            
 
-            
-            <th>Default</th>
             
 
             <th class="last">Description</th>
@@ -831,39 +903,48 @@
             
 <tr class="deep-level-0">
   
-      <td class="name"><code>msg</code></td>
+      <td class="name"><code>req</code></td>
   
 
   <td class="type">
   
       
-<code class="param-type">String</code>
+<code class="param-type">*</code>
 
 
   
   </td>
 
   
-      <td class="attributes">
-      
-          &lt;optional><br>
-      
 
-      
+  
 
+  <td class="description last"><p>request Object</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>res</code></td>
+  
+
+  <td class="type">
+  
       
-      </td>
+<code class="param-type">*</code>
+
+
+  
+  </td>
+
   
 
   
-      <td class="default">
-      
-          ''
-      
-      </td>
-  
 
-  <td class="description last"><p>Success message to be logged</p></td>
+  <td class="description last"><p>Response Object</p></td>
 </tr>
 
 
@@ -909,9 +990,9 @@
 
     
         <p class="tag-source">
-            <a href="utils_customLogger.utils.js.html" class="button">View Source</a>
+            <a href="controllers_admin.controller.js.html" class="button">View Source</a>
             <span>
-                <a href="utils_customLogger.utils.js.html">utils/customLogger.utils.js</a>, <a href="utils_customLogger.utils.js.html#line20">line 20</a>
+                <a href="controllers_admin.controller.js.html">controllers/admin.controller.js</a>, <a href="controllers_admin.controller.js.html#line46">line 46</a>
             </span>
         </p>
     
@@ -933,6 +1014,23 @@
 
 
 
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>Single admin by ID</p></div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
 
 
 
@@ -943,12 +1041,16 @@
 
 
     
-    <h4 class="name" id="warn">
-        <a class="href-link" href="#warn">#</a>
+    <h4 class="name" id="UPDATE">
+        <a class="href-link" href="#UPDATE">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
         
         <span class="code-name">
             
-                warn<span class="signature">(msg<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
+                UPDATE<span class="signature">(req, res)</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -957,7 +1059,7 @@
     
     
     <div class="description">
-        <script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script><p>Warn Log method</p>
+        <script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script>
     </div>
     
 
@@ -982,11 +1084,7 @@
             <th>Type</th>
 
             
-            <th>Attributes</th>
-            
 
-            
-            <th>Default</th>
             
 
             <th class="last">Description</th>
@@ -999,39 +1097,48 @@
             
 <tr class="deep-level-0">
   
-      <td class="name"><code>msg</code></td>
+      <td class="name"><code>req</code></td>
   
 
   <td class="type">
   
       
-<code class="param-type">String</code>
+<code class="param-type">*</code>
 
 
   
   </td>
 
   
-      <td class="attributes">
-      
-          &lt;optional><br>
-      
 
-      
+  
 
+  <td class="description last"><p>request Object</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>res</code></td>
+  
+
+  <td class="type">
+  
       
-      </td>
+<code class="param-type">*</code>
+
+
+  
+  </td>
+
   
 
   
-      <td class="default">
-      
-          ''
-      
-      </td>
-  
 
-  <td class="description last"><p>Warn message to be logged</p></td>
+  <td class="description last"><p>Response Object</p></td>
 </tr>
 
 
@@ -1077,9 +1184,9 @@
 
     
         <p class="tag-source">
-            <a href="utils_customLogger.utils.js.html" class="button">View Source</a>
+            <a href="controllers_admin.controller.js.html" class="button">View Source</a>
             <span>
-                <a href="utils_customLogger.utils.js.html">utils/customLogger.utils.js</a>, <a href="utils_customLogger.utils.js.html#line62">line 62</a>
+                <a href="controllers_admin.controller.js.html">controllers/admin.controller.js</a>, <a href="controllers_admin.controller.js.html#line62">line 62</a>
             </span>
         </p>
     
@@ -1101,6 +1208,217 @@
 
 
 
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>update stats of all admins</p></div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="UPDATE_BY_ID">
+        <a class="href-link" href="#UPDATE_BY_ID">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
+        
+        <span class="code-name">
+            
+                UPDATE_BY_ID<span class="signature">(req, res)</span><span class="type-signature"></span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>req</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">*</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>request Object</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>res</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">*</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>Response Object</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="controllers_admin.controller.js.html" class="button">View Source</a>
+            <span>
+                <a href="controllers_admin.controller.js.html">controllers/admin.controller.js</a>, <a href="controllers_admin.controller.js.html#line74">line 74</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>updated admin</p></div>
+    
+    
+</div>
+
+                
+        </div>
+    </div>
 
 
 

@@ -77,7 +77,7 @@ class mechanic_service {
    * @returns {Mechanic}
    */
   async DELETE(mechId) {
-    const deletedMech = await Mechanic.deleteOne({ _id: mechId });
+    const deletedMech = await Mechanic.findByIdAndDelete(mechId);
     return deletedMech;
   }
 }

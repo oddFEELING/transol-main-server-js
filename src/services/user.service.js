@@ -46,8 +46,8 @@ class user_service {
 
   /**
    * Updates all users
-   * @param {Object} updateData - Object containing fields to be updated for all suers
-   * @returns {User}
+   * @param {Object} updateData - Object containing fields to be updated for all users
+   * @returns {Object} status object for the update operation
    */
   async UPDATE(updateData) {
     const updatedUsers = await User.updateMany(
@@ -79,7 +79,7 @@ class user_service {
    * @returns {User}
    */
   async DELETE(userId) {
-    const deleteResponse = await User.deleteOne({ _id: userId });
+    const deleteResponse = await User.findByIdAndDelete(userId);
     return deleteResponse;
   }
 }

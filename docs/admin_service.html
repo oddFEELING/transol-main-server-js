@@ -5,7 +5,7 @@
   tracking-code-which-will-go-to-the-HEAD
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TRANSOL SERVER API CustomLogger</title>
+  <title>TRANSOL SERVER API admin_service</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -102,7 +102,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Class</p>
-                    <h1>CustomLogger</h1>
+                    <h1>admin_service</h1>
                 </header>
                 
 
@@ -113,9 +113,10 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>CustomLogger<span class="signature">()</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>admin_service<span class="signature">()</span><span class="type-signature"></span></h2>
         
-            <div class="class-description"><p>Logger class for custom logger</p></div>
+            <div class="class-description"><p>Admin service class
+Handles all user services</p></div>
         
     
 </header>
@@ -134,12 +135,12 @@
 
 
     
-    <h4 class="name" id="CustomLogger">
-        <a class="href-link" href="#CustomLogger">#</a>
+    <h4 class="name" id="admin_service">
+        <a class="href-link" href="#admin_service">#</a>
         
         <span class="code-name">
             
-                new CustomLogger<span class="signature">()</span><span class="type-signature"></span>
+                new admin_service<span class="signature">()</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -197,9 +198,9 @@
 
     
         <p class="tag-source">
-            <a href="utils_customLogger.utils.js.html" class="button">View Source</a>
+            <a href="services_admin.service.js.html" class="button">View Source</a>
             <span>
-                <a href="utils_customLogger.utils.js.html">utils/customLogger.utils.js</a>, <a href="utils_customLogger.utils.js.html#line15">line 15</a>
+                <a href="services_admin.service.js.html">services/admin.service.js</a>, <a href="services_admin.service.js.html#line15">line 15</a>
             </span>
         </p>
     
@@ -225,18 +226,12 @@
 
 
 
-    <h5>Examples</h5>
+    <h5>Example</h5>
     
-        <p class="code-caption">Importing custom logger</p>
-    
-    
-        <pre class="prettyprint"><code>const {log} = require('path/to/CustomLogger.js') // named import</code></pre>
-    
-
-        <p class="code-caption">Using the log object</p>
+        <p class="code-caption">Creating a new admin</p>
     
     
-        <pre class="prettyprint"><code>// Logging successlog.success('The task was successful')// logging errorslog.error('The task failed')</code></pre>
+        <pre class="prettyprint"><code>// calling in user.controller.jsconst admin_service = require('path/to/admin_service.js')const adminData = req.bodyconst newAdmin = await admin_service.CREATE(adminData)res.status(201).send(newAdmin)</code></pre>
     
 
 
@@ -271,12 +266,16 @@
 
 
     
-    <h4 class="name" id="data">
-        <a class="href-link" href="#data">#</a>
+    <h4 class="name" id="CREATE">
+        <a class="href-link" href="#CREATE">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
         
         <span class="code-name">
             
-                data<span class="signature">(msg<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
+                CREATE<span class="signature">(adminData)</span><span class="type-signature"> &rarr; {Admin}</span>
             
         </span>
     </h4>
@@ -285,7 +284,7 @@
     
     
     <div class="description">
-        <script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script><p>Data Log method</p>
+        <script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script><p>Creates a new admin</p>
     </div>
     
 
@@ -310,11 +309,7 @@
             <th>Type</th>
 
             
-            <th>Attributes</th>
-            
 
-            
-            <th>Default</th>
             
 
             <th class="last">Description</th>
@@ -327,39 +322,23 @@
             
 <tr class="deep-level-0">
   
-      <td class="name"><code>msg</code></td>
+      <td class="name"><code>adminData</code></td>
   
 
   <td class="type">
   
       
-<code class="param-type">String</code>
+<code class="param-type">Objcet</code>
 
 
   
   </td>
 
   
-      <td class="attributes">
-      
-          &lt;optional><br>
-      
-
-      
-
-      
-      </td>
-  
 
   
-      <td class="default">
-      
-          ''
-      
-      </td>
-  
 
-  <td class="description last"><p>Data message to be logged</p></td>
+  <td class="description last"><p>New admin data</p></td>
 </tr>
 
 
@@ -405,9 +384,9 @@
 
     
         <p class="tag-source">
-            <a href="utils_customLogger.utils.js.html" class="button">View Source</a>
+            <a href="services_admin.service.js.html" class="button">View Source</a>
             <span>
-                <a href="utils_customLogger.utils.js.html">utils/customLogger.utils.js</a>, <a href="utils_customLogger.utils.js.html#line76">line 76</a>
+                <a href="services_admin.service.js.html">services/admin.service.js</a>, <a href="services_admin.service.js.html#line22">line 22</a>
             </span>
         </p>
     
@@ -429,6 +408,29 @@
 
 
 
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">Admin</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
 
 
 
@@ -439,12 +441,16 @@
 
 
     
-    <h4 class="name" id="error">
-        <a class="href-link" href="#error">#</a>
+    <h4 class="name" id="DELETE">
+        <a class="href-link" href="#DELETE">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
         
         <span class="code-name">
             
-                error<span class="signature">(msg<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
+                DELETE<span class="signature">(adminId)</span><span class="type-signature"> &rarr; {Admin}</span>
             
         </span>
     </h4>
@@ -453,7 +459,7 @@
     
     
     <div class="description">
-        <script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script><p>Error Log method</p>
+        <script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script>
     </div>
     
 
@@ -478,11 +484,7 @@
             <th>Type</th>
 
             
-            <th>Attributes</th>
-            
 
-            
-            <th>Default</th>
             
 
             <th class="last">Description</th>
@@ -495,39 +497,23 @@
             
 <tr class="deep-level-0">
   
-      <td class="name"><code>msg</code></td>
+      <td class="name"><code>adminId</code></td>
   
 
   <td class="type">
   
       
-<code class="param-type">String</code>
+<code class="param-type">ObjectId</code>
 
 
   
   </td>
 
   
-      <td class="attributes">
-      
-          &lt;optional><br>
-      
-
-      
-
-      
-      </td>
-  
 
   
-      <td class="default">
-      
-          ''
-      
-      </td>
-  
 
-  <td class="description last"><p>Error message to be logged</p></td>
+  <td class="description last"><p>ID of admin to be deletd</p></td>
 </tr>
 
 
@@ -573,9 +559,9 @@
 
     
         <p class="tag-source">
-            <a href="utils_customLogger.utils.js.html" class="button">View Source</a>
+            <a href="services_admin.service.js.html" class="button">View Source</a>
             <span>
-                <a href="utils_customLogger.utils.js.html">utils/customLogger.utils.js</a>, <a href="utils_customLogger.utils.js.html#line34">line 34</a>
+                <a href="services_admin.service.js.html">services/admin.service.js</a>, <a href="services_admin.service.js.html#line80">line 80</a>
             </span>
         </p>
     
@@ -597,6 +583,29 @@
 
 
 
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">Admin</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
 
 
 
@@ -607,12 +616,16 @@
 
 
     
-    <h4 class="name" id="info">
-        <a class="href-link" href="#info">#</a>
+    <h4 class="name" id="GET">
+        <a class="href-link" href="#GET">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
         
         <span class="code-name">
             
-                info<span class="signature">(msg<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
+                GET<span class="signature">()</span><span class="type-signature"> &rarr; {Array.&lt;Admin>}</span>
             
         </span>
     </h4>
@@ -621,7 +634,7 @@
     
     
     <div class="description">
-        <script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script><p>Info Log method</p>
+        <script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script><p>Gets all admins (no params needed)</p>
     </div>
     
 
@@ -632,77 +645,6 @@
 
 
 
-
-    <h5>Parameters:</h5>
-    
-<div class="table-container">
-    <table class="params table">
-        <thead>
-        <tr>
-            
-            <th>Name</th>
-            
-
-            <th>Type</th>
-
-            
-            <th>Attributes</th>
-            
-
-            
-            <th>Default</th>
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>msg</code></td>
-  
-
-  <td class="type">
-  
-      
-<code class="param-type">String</code>
-
-
-  
-  </td>
-
-  
-      <td class="attributes">
-      
-          &lt;optional><br>
-      
-
-      
-
-      
-      </td>
-  
-
-  
-      <td class="default">
-      
-          ''
-      
-      </td>
-  
-
-  <td class="description last"><p>Info message to be logged</p></td>
-</tr>
-
-
-        
-        </tbody>
-    </table>
-</div>
 
 
 
@@ -741,9 +683,9 @@
 
     
         <p class="tag-source">
-            <a href="utils_customLogger.utils.js.html" class="button">View Source</a>
+            <a href="services_admin.service.js.html" class="button">View Source</a>
             <span>
-                <a href="utils_customLogger.utils.js.html">utils/customLogger.utils.js</a>, <a href="utils_customLogger.utils.js.html#line48">line 48</a>
+                <a href="services_admin.service.js.html">services/admin.service.js</a>, <a href="services_admin.service.js.html#line31">line 31</a>
             </span>
         </p>
     
@@ -765,6 +707,29 @@
 
 
 
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">Array.&lt;Admin></code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
 
 
 
@@ -775,12 +740,16 @@
 
 
     
-    <h4 class="name" id="success">
-        <a class="href-link" href="#success">#</a>
+    <h4 class="name" id="GET_BY_ID">
+        <a class="href-link" href="#GET_BY_ID">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
         
         <span class="code-name">
             
-                success<span class="signature">(msg<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
+                GET_BY_ID<span class="signature">(adminId)</span><span class="type-signature"> &rarr; {Admin}</span>
             
         </span>
     </h4>
@@ -789,7 +758,7 @@
     
     
     <div class="description">
-        <script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script><p>Success Log method</p>
+        <script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script><p>Gets a single user by ID</p>
     </div>
     
 
@@ -814,11 +783,7 @@
             <th>Type</th>
 
             
-            <th>Attributes</th>
-            
 
-            
-            <th>Default</th>
             
 
             <th class="last">Description</th>
@@ -831,39 +796,23 @@
             
 <tr class="deep-level-0">
   
-      <td class="name"><code>msg</code></td>
+      <td class="name"><code>adminId</code></td>
   
 
   <td class="type">
   
       
-<code class="param-type">String</code>
+<code class="param-type">OjectId</code>
 
 
   
   </td>
 
   
-      <td class="attributes">
-      
-          &lt;optional><br>
-      
-
-      
-
-      
-      </td>
-  
 
   
-      <td class="default">
-      
-          ''
-      
-      </td>
-  
 
-  <td class="description last"><p>Success message to be logged</p></td>
+  <td class="description last"><p>ID of single admin to be fetched</p></td>
 </tr>
 
 
@@ -909,9 +858,9 @@
 
     
         <p class="tag-source">
-            <a href="utils_customLogger.utils.js.html" class="button">View Source</a>
+            <a href="services_admin.service.js.html" class="button">View Source</a>
             <span>
-                <a href="utils_customLogger.utils.js.html">utils/customLogger.utils.js</a>, <a href="utils_customLogger.utils.js.html#line20">line 20</a>
+                <a href="services_admin.service.js.html">services/admin.service.js</a>, <a href="services_admin.service.js.html#line41">line 41</a>
             </span>
         </p>
     
@@ -933,6 +882,29 @@
 
 
 
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">Admin</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
 
 
 
@@ -943,12 +915,16 @@
 
 
     
-    <h4 class="name" id="warn">
-        <a class="href-link" href="#warn">#</a>
+    <h4 class="name" id="UPDATE">
+        <a class="href-link" href="#UPDATE">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
         
         <span class="code-name">
             
-                warn<span class="signature">(msg<span class="signature-attributes">opt</span>)</span><span class="type-signature"></span>
+                UPDATE<span class="signature">(updateData)</span><span class="type-signature"> &rarr; {Object}</span>
             
         </span>
     </h4>
@@ -957,7 +933,7 @@
     
     
     <div class="description">
-        <script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script><p>Warn Log method</p>
+        <script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script><p>Updates all users</p>
     </div>
     
 
@@ -982,11 +958,7 @@
             <th>Type</th>
 
             
-            <th>Attributes</th>
-            
 
-            
-            <th>Default</th>
             
 
             <th class="last">Description</th>
@@ -999,39 +971,23 @@
             
 <tr class="deep-level-0">
   
-      <td class="name"><code>msg</code></td>
+      <td class="name"><code>updateData</code></td>
   
 
   <td class="type">
   
       
-<code class="param-type">String</code>
+<code class="param-type">Object</code>
 
 
   
   </td>
 
   
-      <td class="attributes">
-      
-          &lt;optional><br>
-      
-
-      
-
-      
-      </td>
-  
 
   
-      <td class="default">
-      
-          ''
-      
-      </td>
-  
 
-  <td class="description last"><p>Warn message to be logged</p></td>
+  <td class="description last"><p>Object containing fields to be updated for all admins</p></td>
 </tr>
 
 
@@ -1077,9 +1033,9 @@
 
     
         <p class="tag-source">
-            <a href="utils_customLogger.utils.js.html" class="button">View Source</a>
+            <a href="services_admin.service.js.html" class="button">View Source</a>
             <span>
-                <a href="utils_customLogger.utils.js.html">utils/customLogger.utils.js</a>, <a href="utils_customLogger.utils.js.html#line62">line 62</a>
+                <a href="services_admin.service.js.html">services/admin.service.js</a>, <a href="services_admin.service.js.html#line51">line 51</a>
             </span>
         </p>
     
@@ -1101,6 +1057,231 @@
 
 
 
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>status object for the update operation</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">Object</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="UPDATE_BY_ID">
+        <a class="href-link" href="#UPDATE_BY_ID">#</a>
+        
+            
+                <span class='tag'>async</span>
+            
+        
+        <span class="code-name">
+            
+                UPDATE_BY_ID<span class="signature">(adminId, updateData)</span><span class="type-signature"> &rarr; {Admin}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>adminId</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">ObjectId</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>ID of admin to be updated</p></td>
+</tr>
+
+
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>updateData</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">Object</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>Object containing fields to be edited</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="services_admin.service.js.html" class="button">View Source</a>
+            <span>
+                <a href="services_admin.service.js.html">services/admin.service.js</a>, <a href="services_admin.service.js.html#line66">line 66</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">Admin</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
 
 
 

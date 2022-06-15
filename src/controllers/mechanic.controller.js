@@ -94,9 +94,9 @@ class mechanic_ctrl {
     const queryData = await mechanicService.DELETE(mechId);
 
     // ======= check if delete count is more than 0 -->
-    queryData.deletedCount
-      ? res.deleted(queryData, mechId || 'Single mechanic')
-      : next(new CustomError('No found document to be deleted', 404));
+    queryData == null
+      ? next(new CustomError('No found document to be deleted', 404))
+      : res.deleted(queryData, mechId || 'Single mechanic');
   }
 }
 

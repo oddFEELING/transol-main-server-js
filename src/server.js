@@ -31,14 +31,13 @@ app.use('/api/v1', v1);
 // ======= error handler middleware -->
 ErrorHandler(app);
 
-// ======= try Database connection -->
-mongoConnect();
-
 app.listen(env.PORT || 8080, (error) => {
   //  prettier-ignore
-  error
-    ? log.error('Failed to start up server')
-    : log.success('Server started successfully')
+  if (error) return log.error('Failed to start up server')
+
+  log.success('Server started successfully');
+  // ======= try Database connection -->
+  mongoConnect();
 });
 
 // ======= In case of unhandled and uncaught errors -->

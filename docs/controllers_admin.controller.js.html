@@ -7,7 +7,7 @@
   tracking-code-which-will-go-to-the-HEAD
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TRANSOL SERVER API utils/customError.utils.js</title>
+  <title>TRANSOL SERVER API controllers/admin.controller.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -104,7 +104,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>utils/customError.utils.js</h1>
+                    <h1>controllers/admin.controller.js</h1>
                 </header>
                 
 
@@ -113,27 +113,104 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * Custom error OPbject
+            <pre class="prettyprint source linenums"><code>const adminService = require('../services/admin.service');
+const CustomError = require('../utils/customError.utils');
+
+/**
+ * Admin controller for admin routes
+ * @category Controllers
+ * @example &lt;caption>Using the controller for sample route&lt;/caption>
+ * const admin_ctrl = require('path/to/controller')
  *
- * @extends Error
- * @param {String} message - Error message
- * @param {Number} statusCode - State code of the request
- * @example &lt;caption> Throwing custom errors&lt;/caption>
- * const CustomError = require('path/to/CustomError.js')
+ * const AdminRoute = express.Router()
+ * AdminRoute
+ * .route('/api/admins')
+ * .use(admin_ctrl.CREATE)
  *
- * // Something goes wrong
- * throw new CustomError('Something went wrong', 402)
  */
-class CustomError extends Error {
-  constructor(message, statusCode) {
-    super(message);
-    this.name = this.constructor.name;
-    this.status = statusCode || 400;
+class admin_ctrl {
+  /**
+   *
+   * @param {req} req - request Object
+   * @param {res} res - response Object
+   * @returns Newly created admin
+   */
+  async CREATE(req, res) {
+    const adminData = req.body;
+    const queryData = await adminService.CREATE(adminData);
+    res.created(queryData, 'New Admin');
+  }
+
+  /**
+   *
+   * @param {*} req - request Object
+   * @param {*} res - Response Object
+   * @returns List of all admins
+   */
+  async GET(req, res) {
+    const queryData = await adminService.GET();
+    res.found(queryData, 'All Admins');
+  }
+
+  /**
+   *
+   * @param {*} req - request Object
+   * @param {*} res - Response Object
+   * @returns Single admin by ID
+   */
+  async GET_BY_ID(req, res, next) {
+    const adminId = -req.params.id;
+    const queryData = await adminService(this.GET_BY_ID(adminId));
+
+    // ======= check for null data -->
+    queryData === null
+      ? next(new CustomError(`No found admin wih ID ${adminId}`, 404))
+      : res.found(queryData, 'Single admin');
+  }
+
+  /**
+   *
+   * @param {*} req - request Object
+   * @param {*} res - Response Object
+   * @returns update stats of all admins
+   */
+  async UPDATE(req, res) {
+    const updateData = req.body;
+    const queryData = await adminService.UPDATE(updateData);
+    res.updated(queryData, 'All admnins');
+  }
+
+  /**
+   *
+   * @param {*} req - request Object
+   * @param {*} res - Response Object
+   * @returns updated admin
+   */
+  async UPDATE_BY_ID(req, res) {
+    const adminId = req.params.id;
+    const updateData = req.body;
+    const queryData = await adminService.UPDATE_BY_ID(adminId, updateData);
+    res.updated(queryData, 'Single Admin');
+  }
+
+  /**
+   *
+   * @param {*} req - request Object
+   * @param {*} res - Response Object
+   * @returns Delete details of deleted admin
+   */
+  async DELETE(req, res, next) {
+    const adminId = req.params.id;
+    const queryData = await adminService.DELETE(adminId);
+
+    // ======= Check if delecet count is above 0 -->
+    queryData === null
+      ? next(new CustomError('No found document to delete', 404))
+      : res.deleted('queryData', 'Single Admin');
   }
 }
 
-module.exports = CustomError;
+module.exports = new admin_ctrl();
 </code></pre>
         </article>
     </section>
