@@ -4,8 +4,9 @@ const v1 = require('./version/v1.version.js');
 const { log } = require('./utils/customLogger.utils');
 const mongoConnect = require('./database/connect.mongo');
 const ErrorHandler = require('./middlewares/Error.middleware');
-const pre_route = require('./middlewares/pre_route.middleware');
 const CustomResponse = require('./utils/CustomResponse.utils');
+const pre_route = require('./middlewares/pre_route.middleware');
+const socketConnect = require('./middlewares/socket.middleware');
 
 const app = express();
 
@@ -31,7 +32,10 @@ app.use('/api/v1', v1);
 // ======= error handler middleware -->
 ErrorHandler(app);
 
-app.listen(env.PORT || 8080, (error) => {
+// ======= add socket middleware -->
+const { server, io } = socketConnect(app);
+
+server.listen(env.PORT || 8080, (error) => {
   //  prettier-ignore
   if (error) return log.error('Failed to start up server')
 
