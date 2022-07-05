@@ -34,6 +34,9 @@ class user_ctrl {
    * @returns List of all users
    */
   async GET(req, res) {
+    const socket = req.app.get('current_socket');
+    socket.emit('something', { data: 'This is a sample data ' });
+
     const queryData = await userService.GET();
     res.found(queryData, 'All users');
   }
@@ -93,6 +96,10 @@ class user_ctrl {
     queryData === null
       ? next(new CustomError('No found document to be deleted', 404))
       : res.deleted(queryData, userId || 'Single user');
+  }
+
+  async REPAIR_REQUEST(req, res) {
+    const UserId = req.params.id;
   }
 }
 

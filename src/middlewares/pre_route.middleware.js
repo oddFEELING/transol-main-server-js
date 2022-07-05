@@ -1,8 +1,13 @@
 const cors = require('cors');
-const helmet = require('helmet');
 const morgan = require('morgan');
+const helmet = require('helmet');
 const express = require('express');
+const { randomUUID } = require('crypto');
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
 const { log } = require('../utils/customLogger.utils');
+const { SESSION_SECRET, MONGO_URL } = require('../config/env.config');
+const { url } = require('inspector');
 
 /**
  * Used to apply all pre-route middlewares
@@ -30,8 +35,20 @@ const pre_route = (app) => {
 
   app.use(cors());
   app.use(helmet());
-  app.use(morgan('[:status] :method :url'));
   app.use(express.json());
+  app.use(morgan('[:status] :method :url'));
+  app.use(
+    session({
+      resave: false,
+      secret: SESSION_SECRET,
+      saveUninitialized: false,
+      cookie: { maxAge: 60000 },
+      store: MongoStore.create({
+        mongoUrl: MONGO_URL,
+      }),
+      genid: (req) => randomUUID(),
+    })
+  );
 
   return app;
 };

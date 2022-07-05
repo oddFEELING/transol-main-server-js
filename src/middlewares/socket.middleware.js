@@ -1,6 +1,9 @@
 const http = require('http');
 const socketIO = require('socket.io');
+const session = require('express-session');
 const { log } = require('../utils/customLogger.utils');
+const { SESSION_SECRET } = require('../config/env.config');
+const MongoStore = require('connect-mongo');
 
 /**
  * A middleware to handle socket connections and real time interaction
@@ -14,10 +17,23 @@ const socketConnect = (app) => {
 
   //=============================================>
   io.on('connection', (socket) => {
-    log.info(`User: ${socket.id} [Connected]`);
+    app.set('current_socket', socket);
+    log.info(`New user ::: ${socket.id}`);
+
+    socket.on('start-repair', (data) => {
+      log.info(`${socket.id} started a repair session`);
+    });
+
+    socket.on('end-repair', (data) => {
+      log.data('The repair was ended in the user route');
+    });
+
+    socket.on('something', (data) => console.log(data));
   });
+
   //=============================================>
-  return { server, io };
+  app.set('socketio', io);
+  return { server };
 };
 
 module.exports = socketConnect;

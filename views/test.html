@@ -8,9 +8,25 @@
     <script src="https://cdn.socket.io/socket.io-3.0.1.min.js"></script>
   </head>
   <body>
+    <button onclick="handleClick()">Click to make request</button>
+    <button onclick="fetchUser()">This i s another button</button>
     <script>
       const socket = io('http://localhost:8080');
       socket.on('connection');
+      socket.on('welcome', (data) => {
+        console.log(data);
+      });
+      socket.on('something', (data) => console.log(data));
+
+      const handleClick = () => {
+        socket.emit('start-repair', { message: 'Start the repair' });
+      };
+
+      const fetchUser = () => {
+        fetch('http://localhost:8080/api/v1/users')
+          .then((res) => res.json())
+          .then((res) => console.log(res));
+      };
     </script>
   </body>
 </html>

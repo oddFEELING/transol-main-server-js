@@ -12,8 +12,11 @@ const app = express();
 
 // ======= use pre-routes -->
 pre_route(app);
+app.use('/api/v1', v1);
 
+// ======= Root route for app -->
 app.get('/', (req, res) => {
+  console.log(req.session);
   res.status(200).json(
     new CustomResponse(
       'Transol Backend versionless root route',
@@ -27,19 +30,16 @@ app.get('/', (req, res) => {
   );
 });
 
-app.use('/api/v1', v1);
-
 // ======= error handler middleware -->
 ErrorHandler(app);
 
 // ======= add socket middleware -->
-const { server, io } = socketConnect(app);
+const { server } = socketConnect(app);
 
 server.listen(env.PORT || 8080, (error) => {
-  //  prettier-ignore
-  if (error) return log.error('Failed to start up server')
-
+  if (error) return log.error('Failed to start up server');
   log.success('Server started successfully');
+
   // ======= try Database connection -->
   mongoConnect();
 });
@@ -52,3 +52,5 @@ process.on('uncaughtException', (error) => {
 process.on('unhandledRejection', (error) => {
   log.warn(`unHandled Rejection ::: ${error.message}`);
 });
+
+module.exports = app;
