@@ -34,9 +34,6 @@ class user_ctrl {
    * @returns List of all users
    */
   async GET(req, res) {
-    const socket = req.app.get('current_socket');
-    socket.emit('something', { data: 'This is a sample data ' });
-
     const queryData = await userService.GET();
     res.found(queryData, 'All users');
   }
@@ -53,7 +50,7 @@ class user_ctrl {
 
     // ======= check for null data -->
     queryData === null
-      ? next(new CustomError(`No user found with ID ${uerId}`, 404))
+      ? next(new CustomError(`No user found with ID ${userId}`, 404))
       : res.found(queryData, `User with id ${userId || null}`);
   }
 

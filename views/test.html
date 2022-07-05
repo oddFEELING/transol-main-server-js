@@ -6,26 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TEST SOCKETS</title>
     <script src="https://cdn.socket.io/socket.io-3.0.1.min.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+
+      body {
+        gap: 10px;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgb(68, 153, 153);
+        flex-direction: column;
+      }
+
+      button {
+        height: 30px;
+        cursor: pointer;
+      }
+    </style>
   </head>
   <body>
-    <button onclick="handleClick()">Click to make request</button>
-    <button onclick="fetchUser()">This i s another button</button>
+    <button onclick="handleRepair()">Start Repair</button>
+    <button onclick="endRepair()">End Repair</button>
+
     <script>
       const socket = io('http://localhost:8080');
       socket.on('connection');
-      socket.on('welcome', (data) => {
-        console.log(data);
-      });
-      socket.on('something', (data) => console.log(data));
 
-      const handleClick = () => {
-        socket.emit('start-repair', { message: 'Start the repair' });
+      // ======= START REPAIR -->
+      const handleRepair = () => {
+        socket.emit('start-repair', {
+          event: 'Start Repair',
+        });
       };
 
-      const fetchUser = () => {
-        fetch('http://localhost:8080/api/v1/users')
-          .then((res) => res.json())
-          .then((res) => console.log(res));
+      // ======= END REPAIR -->
+      const endRepair = () => {
+        socket.emit('end-repair', {
+          event: 'End Repair',
+        });
       };
     </script>
   </body>

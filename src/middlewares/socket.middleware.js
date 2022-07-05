@@ -18,17 +18,14 @@ const socketConnect = (app) => {
   //=============================================>
   io.on('connection', (socket) => {
     app.set('current_socket', socket);
-    log.info(`New user ::: ${socket.id}`);
+    log.info(`New connection :::> ${socket}`);
 
-    socket.on('start-repair', (data) => {
-      log.info(`${socket.id} started a repair session`);
-    });
-
-    socket.on('end-repair', (data) => {
-      log.data('The repair was ended in the user route');
-    });
-
-    socket.on('something', (data) => console.log(data));
+    socket.on('start-repair', (data) =>
+      console.log(`${socket.id} started event: ${data.event}`)
+    );
+    socket.on('end-repair', (data) =>
+      console.log(`${socket.id} started event: ${data.event}`)
+    );
   });
 
   //=============================================>
