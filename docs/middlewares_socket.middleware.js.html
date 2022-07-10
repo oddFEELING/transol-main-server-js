@@ -7,7 +7,7 @@
   tracking-code-which-will-go-to-the-HEAD
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TRANSOL SERVER API utils/customError.utils.js</title>
+  <title>TRANSOL SERVER API middlewares/socket.middleware.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -104,7 +104,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>utils/customError.utils.js</h1>
+                    <h1>middlewares/socket.middleware.js</h1>
                 </header>
                 
 
@@ -113,27 +113,42 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * Custom error OPbject
- *
- * @extends Error
- * @param {String} message - Error message
- * @param {Number} statusCode - State code of the request
- * @example &lt;caption> Throwing custom errors&lt;/caption>
- * const CustomError = require('path/to/CustomError.js')
- *
- * // Something goes wrong
- * throw new CustomError('Something went wrong', 402)
- */
-class CustomError extends Error {
-  constructor(message, statusCode) {
-    super(message);
-    this.name = this.constructor.name;
-    this.status = statusCode || 400;
-  }
-}
+            <pre class="prettyprint source linenums"><code>const http = require('http');
+const socketIO = require('socket.io');
+const session = require('express-session');
+const { log } = require('../utils/customLogger.utils');
+const { SESSION_SECRET } = require('../config/env.config');
+const MongoStore = require('connect-mongo');
 
-module.exports = CustomError;
+/**
+ * A middleware to handle socket connections and real time interaction
+ * @category Middlewares
+ * @param {App} app - Express app in which sessions would be created
+ * @returns {Object} HTTP server
+ */
+const socketConnect = (app) => {
+  const server = http.createServer(app);
+  const io = socketIO(server, { cors: { origin: '*' } });
+
+  //=============================================>
+  io.on('connection', (socket) => {
+    app.set('current_socket', socket);
+    log.info(`New connection :::> ${socket.id}`);
+
+    socket.on('start-repair', (data) =>
+      log.data(`${socket.id} triggered event: ${data.event}`)
+    );
+    socket.on('end-repair', (data) =>
+      log.data(`${socket.id} triggered event: ${data.event}`)
+    );
+  });
+
+  //=============================================>
+  app.set('socketio', io);
+  return { server };
+};
+
+module.exports = socketConnect;
 </code></pre>
         </article>
     </section>

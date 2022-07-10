@@ -94,7 +94,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="CustomError.html">CustomError</a></li><li><a href="CustomLogger.html">CustomLogger</a></li><li><a href="CustomResponse.html">CustomResponse</a></li></ul><h3>Global</h3><ul><li><a href="global.html#asyncHandler">asyncHandler</a></li></ul></div><div class="category"><h2>Controllers</h2><h3>Classes</h3><ul><li><a href="admin_ctrl.html">admin_ctrl</a></li><li><a href="mechanic_ctrl.html">mechanic_ctrl</a></li><li><a href="user_ctrl.html">user_ctrl</a></li></ul></div><div class="category"><h2>Middlewares</h2><h3>Classes</h3><ul><li><a href="pre_route.html">pre_route</a></li><li><a href="Response.html">Response</a></li></ul></div><div class="category"><h2>Schemas</h2><h3>Classes</h3><ul><li><a href="AdminSchema.html">AdminSchema</a></li><li><a href="MechanicSchema.html">MechanicSchema</a></li><li><a href="RoleSchema.html">RoleSchema</a></li><li><a href="UserSchema.html">UserSchema</a></li></ul></div><div class="category"><h2>Services</h2><h3>Classes</h3><ul><li><a href="admin_service.html">admin_service</a></li><li><a href="mechanic_service.html">mechanic_service</a></li><li><a href="user_service.html">user_service</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="CustomError.html">CustomError</a></li><li><a href="CustomLogger.html">CustomLogger</a></li><li><a href="CustomResponse.html">CustomResponse</a></li></ul><h3>Global</h3><ul><li><a href="global.html#asyncHandler">asyncHandler</a></li><li><a href="global.html#mongoose">mongoose</a></li></ul></div><div class="category"><h2>Controllers</h2><h3>Classes</h3><ul><li><a href="admin_ctrl.html">admin_ctrl</a></li><li><a href="mechanic_ctrl.html">mechanic_ctrl</a></li><li><a href="user_ctrl.html">user_ctrl</a></li></ul></div><div class="category"><h2>Middlewares</h2><h3>Classes</h3><ul><li><a href="pre_route.html">pre_route</a></li><li><a href="Response.html">Response</a></li></ul><h3>Global</h3><ul><li><a href="global.html#socketConnect">socketConnect</a></li></ul></div><div class="category"><h2>Schemas</h2><h3>Classes</h3><ul><li><a href="AdminSchema.html">AdminSchema</a></li><li><a href="MechanicSchema.html">MechanicSchema</a></li><li><a href="RepairSchema.html">RepairSchema</a></li><li><a href="RoleSchema.html">RoleSchema</a></li><li><a href="UserSchema.html">UserSchema</a></li></ul></div><div class="category"><h2>Services</h2><h3>Classes</h3><ul><li><a href="admin_service.html">admin_service</a></li><li><a href="mechanic_service.html">mechanic_service</a></li><li><a href="user_service.html">user_service</a></li></ul></div>
                 
             </nav>
         </div>
@@ -177,6 +177,86 @@
 
     
 
+    
+        <div class='vertical-section'>
+            <h1>Members</h1>
+            <div class="members">
+            
+                <div class="member">
+
+<h4 class="name" id="mongoose">
+    <a class="href-link" href="#mongoose">#</a>
+    
+        
+            <span class='tag'>constant</span>
+        
+    
+    <span class="code-name">
+        mongoose
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script><p>🌹oddFEELING</p>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="database_models_repair.js.html" class="button">View Source</a>
+            <span>
+                <a href="database_models_repair.js.html">database/models/repair.js</a>, <a href="database_models_repair.js.html#line2">line 2</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
+            
+            </div>
+        </div>
     
 
     
@@ -364,6 +444,179 @@ case of any.</p>
     
         <pre class="prettyprint"><code>const {Router} = require('express')const asyncHandler = require('path/to/asyncHandler.js')const UserRoute = Router()UserRoute.route('/user/').get(asyncHandler( routeController ))</code></pre>
     
+
+
+</div>
+            
+                <div class="member">
+
+
+    
+    <h4 class="name" id="socketConnect">
+        <a class="href-link" href="#socketConnect">#</a>
+        
+        <span class="code-name">
+            
+                socketConnect<span class="signature">(app)</span><span class="type-signature"> &rarr; {Object}</span>
+            
+        </span>
+    </h4>
+    
+
+    
+    
+    <div class="description">
+        <script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script><p>A middleware to handle socket connections and real time interaction</p>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+<div class="table-container">
+    <table class="params table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+
+            
+<tr class="deep-level-0">
+  
+      <td class="name"><code>app</code></td>
+  
+
+  <td class="type">
+  
+      
+<code class="param-type">App</code>
+
+
+  
+  </td>
+
+  
+
+  
+
+  <td class="description last"><p>Express app in which sessions would be created</p></td>
+</tr>
+
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="middlewares_socket.middleware.js.html" class="button">View Source</a>
+            <span>
+                <a href="middlewares_socket.middleware.js.html">middlewares/socket.middleware.js</a>, <a href="middlewares_socket.middleware.js.html#line14">line 14</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class='columns method-parameter'>
+        <div class="column is-2"><label>Returns:</label></div>
+        <div class="column is-10">
+            
+                    
+
+<div class="columns">
+    
+    <div class='param-desc column is-7'><p>HTTP server</p></div>
+    
+    
+    <div class='column is-5 has-text-left'>
+        <label>Type: </label>
+        
+<code class="param-type">Object</code>
+
+
+    </div>
+    
+</div>
+
+                
+        </div>
+    </div>
+
+
 
 
 </div>

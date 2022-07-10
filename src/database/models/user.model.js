@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 /**
  * @constructor
  * @category Schemas
+ *
  * @property {Object} personal - Personal data for users
  * @property {String} personal.firstname - User firstname
  * @property {String} personal.lastname - User lastname

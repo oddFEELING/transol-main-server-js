@@ -7,7 +7,7 @@
   tracking-code-which-will-go-to-the-HEAD
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TRANSOL SERVER API utils/customError.utils.js</title>
+  <title>TRANSOL SERVER API database/models/repair.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -104,7 +104,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Source</p>
-                    <h1>utils/customError.utils.js</h1>
+                    <h1>database/models/repair.js</h1>
                 </header>
                 
 
@@ -113,27 +113,75 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * Custom error OPbject
- *
- * @extends Error
- * @param {String} message - Error message
- * @param {Number} statusCode - State code of the request
- * @example &lt;caption> Throwing custom errors&lt;/caption>
- * const CustomError = require('path/to/CustomError.js')
- *
- * // Something goes wrong
- * throw new CustomError('Something went wrong', 402)
- */
-class CustomError extends Error {
-  constructor(message, statusCode) {
-    super(message);
-    this.name = this.constructor.name;
-    this.status = statusCode || 400;
-  }
-}
+            <pre class="prettyprint source linenums"><code>/** 🌹oddFEELING */
+const mongoose = require('mongoose');
 
-module.exports = CustomError;
+/**
+ * @constructor
+ * @category Schemas
+ *
+ * @property {ObjectId} vehicle - The ID of the vehicle to be repaired. this can be populated upon request or database query with the .populate() method
+ *
+ * @property {Object} request - Information of the request that was made for the repair.
+ * @property {ObjectId} request.initiator - Id of the user that initiates a request.
+ * @property {ObjectId[]} request.mechanics - Array of mongoose schema IDs for mechanics assigned to the repair session.
+ * @property {UUID} request.requestID - This is the ID of the current request. Would be gotten from the session ID on the session object
+ * @property {Object} request.geolocation - GPS data of the initiator. This encompasses the current location of the user who requests for a repair session.
+ *
+ * @property {Object} status - Holds data on the status of the repair
+ * @property {('not-started' | 'running' | 'paused' | 'failed' | 'success')} [status.state = 'not-running'] - Indicates the current state of the repair session
+ * @property {Date} status.start_time - Date and time repair was started.
+ * @property {Date} status.end_time - Date and time repair was ended.
+ *
+ * @property {Object} rating - Details of ratings for the repair session
+ * @property {Number} [rating.user_rating = null] - Ratings given to user by mechanic
+ * @property {Number} [ratings.mechanic_rating = null] - Rating points given to the mechanic by the user.
+ */
+const RepairSchema = new mongoose.Schema(
+  {
+    vehicle: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'vehicles',
+    },
+
+    request: {
+      initiator: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users',
+      },
+
+      mechanics: [
+        {
+          type: mongoose.schema.Types.ObjectId,
+          rel: 'mechanics',
+        },
+      ],
+
+      requestID: String,
+
+      geolocation: {
+        x: Number,
+        y: Number,
+      },
+    },
+
+    status: {
+      state: {
+        type: String,
+        defauolt: 'not-started',
+        enum: ['not-started', 'running', 'paused', 'failed', 'success'],
+      },
+      // start_time: Date,
+      // end_time: Date,
+    },
+
+    rating: {
+      user_rating: { type: Number, default: null },
+      mechanic_rating: { type: Number, default: null },
+    },
+  },
+  { collection: 'repair', timestamps: true }
+);
 </code></pre>
         </article>
     </section>

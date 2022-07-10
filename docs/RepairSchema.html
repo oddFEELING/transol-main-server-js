@@ -5,7 +5,7 @@
   tracking-code-which-will-go-to-the-HEAD
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TRANSOL SERVER API Response</title>
+  <title>TRANSOL SERVER API RepairSchema</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -102,7 +102,7 @@
             <div class="content">
                 <header class="page-title">
                     <p>Class</p>
-                    <h1>Response</h1>
+                    <h1>RepairSchema</h1>
                 </header>
                 
 
@@ -113,7 +113,7 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>Response<span class="signature">(Route)</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>RepairSchema<span class="signature">()</span><span class="type-signature"></span></h2>
         
     
 </header>
@@ -132,12 +132,12 @@
 
 
     
-    <h4 class="name" id="Response">
-        <a class="href-link" href="#Response">#</a>
+    <h4 class="name" id="RepairSchema">
+        <a class="href-link" href="#RepairSchema">#</a>
         
         <span class="code-name">
             
-                new Response<span class="signature">(Route)</span><span class="type-signature"></span>
+                new RepairSchema<span class="signature">()</span><span class="type-signature"></span>
             
         </span>
     </h4>
@@ -146,7 +146,7 @@
     
     
     <div class="description">
-        <script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script><p>Wrapper function for routes to set Pre-defined response methods</p>
+        <script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script>
     </div>
     
 
@@ -157,57 +157,6 @@
 
 
 
-
-    <h5>Parameters:</h5>
-    
-<div class="table-container">
-    <table class="params table">
-        <thead>
-        <tr>
-            
-            <th>Name</th>
-            
-
-            <th>Type</th>
-
-            
-
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>Route</code></td>
-  
-
-  <td class="type">
-  
-      
-<code class="param-type">Express.Router()</code>
-
-
-  
-  </td>
-
-  
-
-  
-
-  <td class="description last"><p>Root route to use the Response middleware</p></td>
-</tr>
-
-
-        
-        </tbody>
-    </table>
-</div>
 
 
 
@@ -227,7 +176,11 @@
             <th>Type</th>
 
             
+            <th>Attributes</th>
+            
 
+            
+            <th>Default</th>
             
 
             <th class="last">Description</th>
@@ -239,115 +192,459 @@
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>success</code></td>
+        <td class="name"><code>vehicle</code></td>
     
 
     <td class="type">
     
         
-<code class="param-type">Method</code>
+<code class="param-type">ObjectId</code>
 
 
     
     </td>
 
     
+        <td class="attributes">
+        
 
+        
+        </td>
     
 
-    <td class="description last"><p>Method for undefined queries</p></td>
+    
+        <td class="default">
+        
+        </td>
+    
+
+    <td class="description last"><p>The ID of the vehicle to be repaired. this can be populated upon request or database query with the .populate() method</p></td>
 </tr>
 
         
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>created</code></td>
+        <td class="name"><code>request</code></td>
     
 
     <td class="type">
     
         
-<code class="param-type">Method</code>
+<code class="param-type">Object</code>
 
 
     
     </td>
 
     
+        <td class="attributes">
+        
 
+        
+        </td>
     
 
-    <td class="description last"><p>Response for create queries</p></td>
+    
+        <td class="default">
+        
+        </td>
+    
+
+    <td class="description last"><p>Information of the request that was made for the repair.</p></td>
 </tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>initiator</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">ObjectId</code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+        <td class="default">
+        
+        </td>
+    
+
+    <td class="description last"><p>Id of the user that initiates a request.</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>mechanics</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">Array.&lt;ObjectId></code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+        <td class="default">
+        
+        </td>
+    
+
+    <td class="description last"><p>Array of mongoose schema IDs for mechanics assigned to the repair session.</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>requestID</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">UUID</code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+        <td class="default">
+        
+        </td>
+    
+
+    <td class="description last"><p>This is the ID of the current request. Would be gotten from the session ID on the session object</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>geolocation</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">Object</code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+        <td class="default">
+        
+        </td>
+    
+
+    <td class="description last"><p>GPS data of the initiator. This encompasses the current location of the user who requests for a repair session.</p></td>
+</tr>
+
+  
 
         
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>found</code></td>
+        <td class="name"><code>status</code></td>
     
 
     <td class="type">
     
         
-<code class="param-type">Method</code>
+<code class="param-type">Object</code>
 
 
     
     </td>
 
     
+        <td class="attributes">
+        
 
+        
+        </td>
     
 
-    <td class="description last"><p>Method for find/get queries</p></td>
+    
+        <td class="default">
+        
+        </td>
+    
+
+    <td class="description last"><p>Holds data on the status of the repair</p></td>
 </tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>state</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">'not-started'</code>
+|
+
+<code class="param-type">'running'</code>
+|
+
+<code class="param-type">'paused'</code>
+|
+
+<code class="param-type">'failed'</code>
+|
+
+<code class="param-type">'success'</code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+        <td class="default">
+        
+            'not-running'
+        
+        </td>
+    
+
+    <td class="description last"><p>Indicates the current state of the repair session</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>start_time</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">Date</code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+        <td class="default">
+        
+        </td>
+    
+
+    <td class="description last"><p>Date and time repair was started.</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>end_time</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">Date</code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+        <td class="default">
+        
+        </td>
+    
+
+    <td class="description last"><p>Date and time repair was ended.</p></td>
+</tr>
+
+  
 
         
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>updated</code></td>
+        <td class="name"><code>rating</code></td>
     
 
     <td class="type">
     
         
-<code class="param-type">Method</code>
+<code class="param-type">Object</code>
 
 
     
     </td>
 
     
+        <td class="attributes">
+        
 
+        
+        </td>
     
 
-    <td class="description last"><p>Method for update queries</p></td>
+    
+        <td class="default">
+        
+        </td>
+    
+
+    <td class="description last"><p>Details of ratings for the repair session</p></td>
 </tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>user_rating</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">Number</code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+        <td class="default">
+        
+            null
+        
+        </td>
+    
+
+    <td class="description last"><p>Ratings given to user by mechanic</p></td>
+</tr>
+
+  
 
         
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>deleted</code></td>
+        <td class="name"><code>ratings.mechanic_rating</code></td>
     
 
     <td class="type">
     
         
-<code class="param-type">Method</code>
+<code class="param-type">Number</code>
 
 
     
     </td>
 
     
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
 
+        
+        </td>
     
 
-    <td class="description last"><p>Method for delete queries</p></td>
+    
+        <td class="default">
+        
+            null
+        
+        </td>
+    
+
+    <td class="description last"><p>Rating points given to the mechanic by the user.</p></td>
 </tr>
 
         
@@ -390,9 +687,9 @@
 
     
         <p class="tag-source">
-            <a href="middlewares_Response.middleware.js.html" class="button">View Source</a>
+            <a href="database_models_repair.js.html" class="button">View Source</a>
             <span>
-                <a href="middlewares_Response.middleware.js.html">middlewares/Response.middleware.js</a>, <a href="middlewares_Response.middleware.js.html#line38">line 38</a>
+                <a href="database_models_repair.js.html">database/models/repair.js</a>, <a href="database_models_repair.js.html#line25">line 25</a>
             </span>
         </p>
     
@@ -415,39 +712,7 @@
 
 
 
-    <div class='columns method-parameter'>
-        <div class="column is-2"><label>Returns:</label></div>
-        <div class="column is-10">
-            
-                    
 
-<div class="columns">
-    
-    <div class='param-desc column is-7'><p>List of pre-defined response methods to be used in query response. theses are passed on to the next middleware/controller by calling next()</p></div>
-    
-    
-</div>
-
-                
-        </div>
-    </div>
-
-
-
-
-    <h5>Examples</h5>
-    
-        <p class="code-caption">Using the middleware on a route</p>
-    
-    
-        <pre class="prettyprint"><code>// Import middleware into route or root routeconst Response = require('path/to/middleware')const {Router} = require('express')// set routeconst AppRoute = Router()// wrap route at top level with Response middlewareResponse(AppRoute)// Apply other routes or middlewares below</code></pre>
-    
-
-        <p class="code-caption">Using the methods to return response data inside a middleware or controller</p>
-    
-    
-        <pre class="prettyprint"><code>// there is no need for imports as the methods are added to the res objectasync GET_USER(req, res) {const queryData = await user_service.GET_USER()res.found(queryData, 'ALl Users')}</code></pre>
-    
 
 
 
