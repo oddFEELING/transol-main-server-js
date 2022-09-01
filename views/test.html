@@ -18,8 +18,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: rgb(68, 153, 153);
         flex-direction: column;
+        background-color: rgb(68, 153, 153);
       }
 
       button {
@@ -37,9 +37,13 @@
       socket.on('connection');
 
       // ======= START REPAIR -->
-      const handleRepair = () => {
+      const handleRepair = async () => {
+        await fetch('http://localhost:8080/api/v1/repairs', {
+          method: 'post',
+        });
+
         socket.emit('start-repair', {
-          event: 'Start Repair',
+          event: 'Sample event data !',
         });
       };
 

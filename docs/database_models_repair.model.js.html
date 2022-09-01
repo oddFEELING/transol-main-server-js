@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +7,7 @@
   tracking-code-which-will-go-to-the-HEAD
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>TRANSOL SERVER API CustomResponse</title>
+  <title>TRANSOL SERVER API database/models/repair.model.js</title>
 
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -101,337 +103,132 @@
         <div class="core" id="main-content-wrapper">
             <div class="content">
                 <header class="page-title">
-                    <p>Class</p>
-                    <h1>CustomResponse</h1>
+                    <p>Source</p>
+                    <h1>database/models/repair.model.js</h1>
                 </header>
                 
 
 
 
-
-<section>
-
-<header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>CustomResponse<span class="signature">(message, data<span class="signature-attributes">opt</span>, success)</span><span class="type-signature"> &rarr; {void}</span></h2>
-        
-            <div class="class-description"><p>Response Object</p></div>
-        
-    
-</header>
-
-<article>
-    <div class="container-overview">
-    
-        
-            <div class='vertical-section'>
-                <div class="members">
-                    <div class="member">
-                        <div class=name>
-                            <span class="tag">Constructor</span>
-                        </div>
-                        
-
-
-    
-    <h4 class="name" id="CustomResponse">
-        <a class="href-link" href="#CustomResponse">#</a>
-        
-        <span class="code-name">
-            
-                new CustomResponse<span class="signature">(message, data<span class="signature-attributes">opt</span>, success)</span><span class="type-signature"> &rarr; {void}</span>
-            
-        </span>
-    </h4>
-    
-
-    
-    
-    <div class="description">
-        <script type="text/javascript" src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script>
-    </div>
-    
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-<div class="table-container">
-    <table class="params table">
-        <thead>
-        <tr>
-            
-            <th>Name</th>
-            
-
-            <th>Type</th>
-
-            
-            <th>Attributes</th>
-            
-
-            
-            <th>Default</th>
-            
-
-            <th class="last">Description</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>message</code></td>
-  
-
-  <td class="type">
-  
-      
-<code class="param-type">String</code>
-
-
-  
-  </td>
-
-  
-      <td class="attributes">
-      
-
-      
-
-      
-      </td>
-  
-
-  
-      <td class="default">
-      
-      </td>
-  
-
-  <td class="description last"><p>Response message</p></td>
-</tr>
-
-
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>data</code></td>
-  
-
-  <td class="type">
-  
-      
-<code class="param-type">*</code>
-
-
-  
-  </td>
-
-  
-      <td class="attributes">
-      
-          &lt;optional><br>
-      
-
-      
-
-      
-      </td>
-  
-
-  
-      <td class="default">
-      
-          null
-      
-      </td>
-  
-
-  <td class="description last"><p>Data/payload to be passed</p></td>
-</tr>
-
-
-        
-
-            
-<tr class="deep-level-0">
-  
-      <td class="name"><code>success</code></td>
-  
-
-  <td class="type">
-  
-      
-<code class="param-type">boolean</code>
-
-
-  
-  </td>
-
-  
-      <td class="attributes">
-      
-
-      
-
-      
-      </td>
-  
-
-  
-      <td class="default">
-      
-      </td>
-  
-
-  <td class="description last"><p>State of the request</p></td>
-</tr>
-
-
-        
-        </tbody>
-    </table>
-</div>
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    
-
-    
-
-    
-
-    
-        <p class="tag-source">
-            <a href="utils_CustomResponse.utils.js.html" class="button">View Source</a>
-            <span>
-                <a href="utils_CustomResponse.utils.js.html">utils/CustomResponse.utils.js</a>, <a href="utils_CustomResponse.utils.js.html#line14">line 14</a>
-            </span>
-        </p>
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class='columns method-parameter'>
-        <div class="column is-2"><label>Returns:</label></div>
-        <div class="column is-10">
-            
-                    
-
-<div class="columns">
-    
-    
-    <div class='column is-5 has-text-left'>
-        <label>Type: </label>
-        
-<code class="param-type">void</code>
-
-
-    </div>
-    
-</div>
-
-                
-        </div>
-    </div>
-
-
-
-
-    <h5>Example</h5>
-    
-        <p class="code-caption">Example response</p>
-    
-    
-        <pre class="prettyprint"><code>const userData = // code to get user datares.status(200).send(new CustomResponse('User created',userData, true ))</code></pre>
-    
-
-
-
-                    </div>
-                </div>
-            </div>
-        
-    
-    </div>
-    
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</article>
-
-</section>
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>const mongoose = require('mongoose');
+
+/**
+ * @constructor
+ * @category Schemas
+ *
+ * @property {ObjectId} vehicle - The ID of the vehicle to be repaired. this can be populated upon request or database query with the .populate() method
+ *
+ * @property {Object} request - Information of the request that was made for the repair.
+ * @property {ObjectId} request.initiator - Id of the user that initiates a request.
+ * @property {ObjectId[]} request.mechanics - Array of mongoose schema IDs for mechanics assigned to the repair session.
+ * @property {Object} diagnostics - Holds the details of the diagnostics session
+ * @property {String} diagnostis.fault_name - Name of the fault derived from diagnostics
+ * @property {Number} diagnostics.cost - initial cost of diagnostics
+ * @property {Number} diagnostics.discount - Total discount added to discount if user decides to carry on with repair.
+ * @property {UUID} request.requestID - This is the ID of the current request. Would be gotten from the session ID on the session object
+ * @property {Object} request.geolocation - GPS data of the initiator. This encompasses the current location of the user who requests for a repair session.
+ * @property {Object} benefits - Object containing benefits from subscriptions
+ * @property {Boolean} benefits.diagnosis - true if user has active subscription for free diagnostics
+ * @property {Boolean} benefits.repair - true if user has active subscription that allows free repairs
+ * @property {Boolean} benefits.tow - true if user has active subscription that allows free tows
+ * @property {Boolean} benefits.alt_free_ride - true if user has active subscription that allows free alt_free_rides
+ * @property {Boolean} benefits.specialists - true if user has active subscription that allows free specialistss requests.
+ * @property {Boolean} benefits.help_a_friend - true if user has active subscription that allows to help a friend for free one time.
+ * @property {Object} status - Holds data on the status of the repair
+ * @property {('not-started' | 'running' | 'paused' | 'failed' | 'success')} [status.state = 'not-running'] - Indicates the current state of the repair session
+ * @property {Date} status.start_time - Date and time repair was started.
+ * @property {Date} status.end_time - Date and time repair was ended.
+ * @property {('onsite' | 'in-house')} [repair_type = 'on-site'] - The type of repair
+ * @property {Object} rating - Details of ratings for the repair session
+ * @property {Number} [rating.user_rating = null] - Ratings given to user by mechanic
+ * @property {Number} [ratings.mechanic_rating = null] - Rating points given to the mechanic by the user.
+ */
+const RepairSchema = new mongoose.Schema(
+  {
+    vehicle: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'vehicles',
+    },
+
+    request: {
+      initiator: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users',
+      },
+
+      diagnostics: {
+        fault_name: { type: String },
+        // TODO: level_of_fault: {type: },
+        cost: { type: Number },
+        discount: Number,
+      },
+
+      benefits: {
+        diagnosis: Boolean,
+        repair: Boolean,
+        tow: Boolean,
+        alt_free_ride: Boolean,
+        specialist: Boolean,
+        help_a_friend: Boolean,
+      },
+
+      mechanics: [
+        {
+          type: mongoose.schema.Types.ObjectId,
+          rel: 'mechanics',
+        },
+      ],
+
+      repair_type: {
+        type: String,
+        default: 'on-site',
+        enum: ['on-site', 'in-house'],
+      },
+      requestID: String,
+
+      geolocation: {
+        x: Number,
+        y: Number,
+      },
+    },
+
+    status: {
+      state: {
+        type: String,
+        defauolt: 'not-started',
+        enum: ['not-started', 'running', 'paused', 'failed', 'success'],
+      },
+      // start_time: Date,
+      // end_time: Date,
+    },
+
+    rating: {
+      user_rating: { type: Number, default: null },
+      mechanic_rating: { type: Number, default: null },
+    },
+  },
+  { collection: 'repairs', timestamps: true }
+);
+
+const RepairModel = mongoose.model('repairs', RepairSchema);
+
+module.exports = RepairModel;
+
+/**
+ * If the customer continues with the repair, no need for diagnosis payment.
+ *
+ *
+ * Number plate
+ * Car model
+ * Chasis number
+ * Vehicle identification number (VIN)
+ */
+</code></pre>
+        </article>
+    </section>
 
 
 

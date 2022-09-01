@@ -11,18 +11,19 @@ const { log } = require('../utils/customLogger.utils');
 const socketConnect = (app) => {
   const server = http.createServer(app);
   const io = socketIO(server, { cors: { origin: '*' } });
+  io.sockets.setMaxListeners(0);
 
   //=============================================>
   io.on('connection', (socket) => {
     app.set('current_socket', socket);
     log.info(`New connection :::> ${socket.id}`);
 
-    socket.on('start-repair', (data) =>
-      log.data(`${socket.id} triggered event: ${data.event}`)
-    );
-    socket.on('end-repair', (data) =>
-      log.data(`${socket.id} triggered event: ${data.event}`)
-    );
+    // socket.on('start-repair', (data) =>
+    //   log.data(`${socket.id} triggered event: ${data.event}`)
+    // );
+    // socket.on('end-repair', (data) =>
+    //   log.data(`${socket.id} triggered event: ${data.event}`)
+    // );
   });
 
   //=============================================>

@@ -54,3 +54,7 @@ process.on('unhandledRejection', (error) => {
 });
 
 module.exports = app;
+
+/*
+TODO: S.O.S BUTTON FOR MECHANICS!!
+*/

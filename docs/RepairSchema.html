@@ -94,7 +94,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="CustomError.html">CustomError</a></li><li><a href="CustomLogger.html">CustomLogger</a></li><li><a href="CustomResponse.html">CustomResponse</a></li></ul><h3>Global</h3><ul><li><a href="global.html#asyncHandler">asyncHandler</a></li><li><a href="global.html#mongoose">mongoose</a></li></ul></div><div class="category"><h2>Controllers</h2><h3>Classes</h3><ul><li><a href="admin_ctrl.html">admin_ctrl</a></li><li><a href="mechanic_ctrl.html">mechanic_ctrl</a></li><li><a href="user_ctrl.html">user_ctrl</a></li></ul></div><div class="category"><h2>Middlewares</h2><h3>Classes</h3><ul><li><a href="pre_route.html">pre_route</a></li><li><a href="Response.html">Response</a></li></ul><h3>Global</h3><ul><li><a href="global.html#socketConnect">socketConnect</a></li></ul></div><div class="category"><h2>Schemas</h2><h3>Classes</h3><ul><li><a href="AdminSchema.html">AdminSchema</a></li><li><a href="MechanicSchema.html">MechanicSchema</a></li><li><a href="RepairSchema.html">RepairSchema</a></li><li><a href="RoleSchema.html">RoleSchema</a></li><li><a href="UserSchema.html">UserSchema</a></li></ul></div><div class="category"><h2>Services</h2><h3>Classes</h3><ul><li><a href="admin_service.html">admin_service</a></li><li><a href="mechanic_service.html">mechanic_service</a></li><li><a href="user_service.html">user_service</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Classes</h3><ul><li><a href="CustomError.html">CustomError</a></li><li><a href="CustomLogger.html">CustomLogger</a></li><li><a href="CustomResponse.html">CustomResponse</a></li></ul><h3>Global</h3><ul><li><a href="global.html#asyncHandler">asyncHandler</a></li></ul></div><div class="category"><h2>Controllers</h2><h3>Classes</h3><ul><li><a href="admin_ctrl.html">admin_ctrl</a></li><li><a href="mechanic_ctrl.html">mechanic_ctrl</a></li><li><a href="user_ctrl.html">user_ctrl</a></li></ul></div><div class="category"><h2>Middlewares</h2><h3>Classes</h3><ul><li><a href="pre_route.html">pre_route</a></li><li><a href="Response.html">Response</a></li></ul><h3>Global</h3><ul><li><a href="global.html#socketConnect">socketConnect</a></li></ul></div><div class="category"><h2>Schemas</h2><h3>Classes</h3><ul><li><a href="AdminSchema.html">AdminSchema</a></li><li><a href="MechanicSchema.html">MechanicSchema</a></li><li><a href="RepairSchema.html">RepairSchema</a></li><li><a href="RoleSchema.html">RoleSchema</a></li><li><a href="UserSchema.html">UserSchema</a></li></ul></div><div class="category"><h2>Services</h2><h3>Classes</h3><ul><li><a href="admin_service.html">admin_service</a></li><li><a href="mechanic_service.html">mechanic_service</a></li><li><a href="user_service.html">user_service</a></li></ul></div>
                 
             </nav>
         </div>
@@ -321,10 +321,144 @@
 </tr>
 
   
-      
-<tr class="deep-level-1">
+
+        
+            
+<tr class="deep-level-0">
     
-        <td class="name"><code>requestID</code></td>
+        <td class="name"><code>diagnostics</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">Object</code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+        <td class="default">
+        
+        </td>
+    
+
+    <td class="description last"><p>Holds the details of the diagnostics session</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>diagnostis.fault_name</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">String</code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+        <td class="default">
+        
+        </td>
+    
+
+    <td class="description last"><p>Name of the fault derived from diagnostics</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>diagnostics.cost</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">Number</code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+        <td class="default">
+        
+        </td>
+    
+
+    <td class="description last"><p>initial cost of diagnostics</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>diagnostics.discount</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">Number</code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+        <td class="default">
+        
+        </td>
+    
+
+    <td class="description last"><p>Total discount added to discount if user decides to carry on with repair.</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>request.requestID</code></td>
     
 
     <td class="type">
@@ -353,11 +487,11 @@
     <td class="description last"><p>This is the ID of the current request. Would be gotten from the session ID on the session object</p></td>
 </tr>
 
-  
-      
-<tr class="deep-level-1">
+        
+            
+<tr class="deep-level-0">
     
-        <td class="name"><code>geolocation</code></td>
+        <td class="name"><code>request.geolocation</code></td>
     
 
     <td class="type">
@@ -384,6 +518,237 @@
     
 
     <td class="description last"><p>GPS data of the initiator. This encompasses the current location of the user who requests for a repair session.</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>benefits</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">Object</code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+        <td class="default">
+        
+        </td>
+    
+
+    <td class="description last"><p>Object containing benefits from subscriptions</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>diagnosis</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">Boolean</code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+        <td class="default">
+        
+        </td>
+    
+
+    <td class="description last"><p>true if user has active subscription for free diagnostics</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>repair</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">Boolean</code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+        <td class="default">
+        
+        </td>
+    
+
+    <td class="description last"><p>true if user has active subscription that allows free repairs</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>tow</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">Boolean</code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+        <td class="default">
+        
+        </td>
+    
+
+    <td class="description last"><p>true if user has active subscription that allows free tows</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>alt_free_ride</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">Boolean</code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+        <td class="default">
+        
+        </td>
+    
+
+    <td class="description last"><p>true if user has active subscription that allows free alt_free_rides</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>specialists</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">Boolean</code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+        <td class="default">
+        
+        </td>
+    
+
+    <td class="description last"><p>true if user has active subscription that allows free specialistss requests.</p></td>
+</tr>
+
+  
+      
+<tr class="deep-level-1">
+    
+        <td class="name"><code>help_a_friend</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">Boolean</code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+        <td class="default">
+        
+        </td>
+    
+
+    <td class="description last"><p>true if user has active subscription that allows to help a friend for free one time.</p></td>
 </tr>
 
   
@@ -542,6 +907,46 @@
             
 <tr class="deep-level-0">
     
+        <td class="name"><code>repair_type</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">'onsite'</code>
+|
+
+<code class="param-type">'in-house'</code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+        <td class="default">
+        
+            'on-site'
+        
+        </td>
+    
+
+    <td class="description last"><p>The type of repair</p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
         <td class="name"><code>rating</code></td>
     
 
@@ -687,9 +1092,9 @@
 
     
         <p class="tag-source">
-            <a href="database_models_repair.js.html" class="button">View Source</a>
+            <a href="database_models_repair.model.js.html" class="button">View Source</a>
             <span>
-                <a href="database_models_repair.js.html">database/models/repair.js</a>, <a href="database_models_repair.js.html#line25">line 25</a>
+                <a href="database_models_repair.model.js.html">database/models/repair.model.js</a>, <a href="database_models_repair.model.js.html#line34">line 34</a>
             </span>
         </p>
     
