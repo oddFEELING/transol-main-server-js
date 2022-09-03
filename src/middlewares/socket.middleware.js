@@ -15,15 +15,9 @@ const socketConnect = (app) => {
 
   //=============================================>
   io.on('connection', (socket) => {
+    socket.join('active'); // room for active users
     app.set('current_socket', socket);
     log.info(`New connection :::> ${socket.id}`);
-
-    // socket.on('start-repair', (data) =>
-    //   log.data(`${socket.id} triggered event: ${data.event}`)
-    // );
-    // socket.on('end-repair', (data) =>
-    //   log.data(`${socket.id} triggered event: ${data.event}`)
-    // );
   });
 
   //=============================================>
@@ -32,3 +26,5 @@ const socketConnect = (app) => {
 };
 
 module.exports = socketConnect;
+
+// req.app.get('current_socket') gives the socket object at controller/middleware level

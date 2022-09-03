@@ -15,7 +15,7 @@ const Mechanic = require('../database/models/mechanic.model');
 class mechanic_service {
   /**
    * Creates a new mechanic
-   * @param {Objcet} mechanicData - New User data
+   * @param {Object} mechanicData - New User data
    * @returns {Mechanic}
    */
   async CREATE(mechanicData) {

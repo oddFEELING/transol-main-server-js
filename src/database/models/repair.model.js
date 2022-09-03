@@ -84,7 +84,7 @@ const RepairSchema = new mongoose.Schema(
       state: {
         type: String,
         defauolt: 'not-started',
-        enum: ['not-started', 'running', 'paused', 'failed', 'success'],
+        enum: ['not-started', 'on-going', 'paused', 'failed', 'success'],
       },
       // start_time: Date,
       // end_time: Date,
@@ -110,4 +110,5 @@ module.exports = RepairModel;
  * Car model
  * Chasis number
  * Vehicle identification number (VIN)
+ * Quick fix
  */

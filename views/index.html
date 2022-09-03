@@ -31,6 +31,7 @@
   <body>
     <button onclick="handleRepair()">Start Repair</button>
     <button onclick="endRepair()">End Repair</button>
+    <button>Mechanic accept request</button>
 
     <script>
       const socket = io('http://localhost:8080');
@@ -42,8 +43,15 @@
           method: 'post',
         });
 
-        socket.emit('start-repair', {
-          event: 'Sample event data !',
+        socket.to('active').emit('start-repair', {
+          fault: 'Burst cylinder',
+          time_to_fix: '4hrs',
+          cost: 34000,
+          discount: '20%',
+        });
+
+        socket.on('broadcast', (data) => {
+          log(data);
         });
       };
 
@@ -52,6 +60,11 @@
         socket.emit('end-repair', {
           event: 'End Repair',
         });
+      };
+
+      // ======= END REPAIR -->
+      const mechAcceptReq = () => {
+        socket.in('active').on('broadcast', (data) => {});
       };
     </script>
   </body>

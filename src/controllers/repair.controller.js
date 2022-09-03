@@ -1,22 +1,42 @@
 const CustomError = require('../utils/customError.utils');
 const { log } = require('../utils/customLogger.utils');
+const repairService = require('../services/repair.service');
 
 class repair_ctrl {
   async CREATE(req, res) {
-    const socket = req.app.get('current_socket');
+    const repairData = req.body;
+    const newRepair = await repairService.CREATE(repairData);
+    res.created(newRepair, 'new repair');
+  }
 
-    socket.once('start-repair', (data) => {
-      console.log(data);
-    });
-    res.status(200).send('route Hit normally');
+  async GET(req, res) {
+    const queryData = await repairService.GET;
+    res.found(queryData, 'All repairs');
+  }
+
+  async GET_BY_ID(req, res) {
+    const repairId = req.params.id;
+    const queryData = await repairService.GET_BY_ID(repairId);
+    res.found(queryData, 'Single repair');
+  }
+
+  async UPDATE(req, res) {
+    const updateData = req.body;
+    const queryData = await repairService.UPDATE(updateData);
+    res.updated(queryData, 'all repairs');
+  }
+
+  async UPDATE_BY_ID(req, res) {
+    const stateData = req.body;
+    const query = await repairService.UPDATE(stateData);
+    res.updated(query, 'single repair');
+  }
+
+  async DELETE(req, res) {
+    const repairId = req.params.id;
+    const queryData = await repairService.DELETE(repairId);
+    res.deleted(queryData, 'single repair');
   }
 }
-module.exports = new repair_ctrl();
 
-// user clicks on request repair ---- client-emit
-// create new repair object ---- server-action
-// add id of new repair to user repair history ---- server-action
-// get closest 5 mechanics ---- server-action
-// send request to selected mechanic ---- server-emit
-// mechanic accepts request ---- client-emit
-// mecahnic is added to repair object ---- server-action
+module.exports = new repair_ctrl();

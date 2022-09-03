@@ -15,7 +15,6 @@ const { log } = require('../utils/customLogger.utils');
  */
 class mechanic_ctrl {
   /**
-   *
    * @param {*} req - request object
    * @param {*} res - response Object
    * @returns Newly created Mechanic
@@ -28,7 +27,6 @@ class mechanic_ctrl {
   }
 
   /**
-   *
    * @param {*} req - request object
    * @param {*} res - response Object
    * @returns List of all Mechanics
@@ -39,7 +37,6 @@ class mechanic_ctrl {
   }
 
   /**
-   *
    * @param {*} req - request object
    * @param {*} res - response Object
    * @returns Single Mechanic by ID
@@ -55,7 +52,6 @@ class mechanic_ctrl {
   }
 
   /**
-   *
    * @param {*} req - request object
    * @param {*} res - response Object
    * @returns Update details of all mechanics
@@ -67,7 +63,6 @@ class mechanic_ctrl {
   }
 
   /**
-   *
    * @param {*} req - request object
    * @param {*} res - response Object
    * @returns Update detail of single mechanic
@@ -84,7 +79,6 @@ class mechanic_ctrl {
   }
 
   /**
-   *
    * @param {*} req - request object
    * @param {*} res - response Object
    * @returns Delete details for single mechanic
@@ -97,6 +91,17 @@ class mechanic_ctrl {
     queryData == null
       ? next(new CustomError('No found document to be deleted', 404))
       : res.deleted(queryData, mechId || 'Single mechanic');
+  }
+
+  /**
+   * @param {*} req - request object
+   * @param {*} res - response object
+   */
+  async GET_REQUEST() {
+    // get socket from app
+    const socket = req.app.get('current_socket');
+
+    socket.once('');
   }
 }
 
